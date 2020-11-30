@@ -1,0 +1,15 @@
+#This tricks with the php extensions
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^([^\.]+)$ $1.php [NC,L]
+# this prevents access of directiories
+
+RewriteEngine On
+Order Deny,Allow
+#Deny from All
+Allow from 192.168.0.1
+RewriteRule (^|/)Configuration(/|$) - [F]
+RewriteBase /you-got-framed-general-SzoBa
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA]
