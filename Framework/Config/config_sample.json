@@ -1,0 +1,16 @@
+{
+  "database_connection": {
+	"user": "johndoe",
+	"password": "1234",
+	"host": "localhost",
+	"database_name": "my_database"
+  },
+  "template_engine": {
+	"templates": "Templates",
+	"template-cache": "TemplatesCache"
+  },
+  "logging": {
+	"log-directory": "Logs",
+	"extension": ".log"
+  }
+}

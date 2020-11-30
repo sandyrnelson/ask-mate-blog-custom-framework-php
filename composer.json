@@ -1,0 +1,20 @@
+{
+    "name": "bodroghy/you-got-framed-general-bodroghykristof",
+    "authors": [
+        {
+            "name": "bodroghykristof",
+            "email": "bodroghykristof@gmail.com"
+        }
+    ],
+    "require": {
+        "psr/log": "^1.1",
+        "eftec/bladeone": "^3.47",
+        "phan/phan": "^3.2"
+    },
+  	"autoload": {
+	  "psr-4": {
+		"App\\": "App/",
+		"BK_Framework\\": "Framework/"
+	  }
+	}
+}
