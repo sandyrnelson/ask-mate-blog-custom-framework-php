@@ -30,3 +30,4 @@ Homestead.json
 phan/
 analyze.txt
 .htaccess
+App/Config
