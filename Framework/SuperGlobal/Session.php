@@ -17,16 +17,18 @@ use BK_Framework\Logger\Logger;
 class Session
 {
 
-	/**
-	 * Login user by setting value to "userId" key in session
-	 *
-	 * @param $id
-	 * @throws NoSessionException If session_start() has not been called before operation
-	 */
-	public static function login($id) : void
+    /**
+     * Login user by setting value to "userId" key in session
+     *
+     * @param $id
+     * @param $userName
+     * @throws NoSessionException If session_start() has not been called before operation
+     */
+	public static function login($id, $userName) : void
 	{
 		self::checkSession("Could not log in. Session has not been initialized");
 		$_SESSION["userId"] = $id;
+		$_SESSION['username'] = $userName;
 	}
 
 	/**
@@ -116,5 +118,9 @@ class Session
 			throw new NoSessionException($message);
 		}
 	}
+
+	public static function isSessionExists() : bool {
+	    return session_status() === PHP_SESSION_ACTIVE;
+    }
 
 }
