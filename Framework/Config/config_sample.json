@@ -7,10 +7,11 @@
   },
   "template_engine": {
 	"templates": "Templates",
-	"template-cache": "TemplatesCache"
+	"template-cache": "TemplateCache"
   },
   "logging": {
 	"log-directory": "Logs",
 	"extension": ".log"
   }
 }
+ls

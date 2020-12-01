@@ -4,7 +4,7 @@
     <title>Registration</title>
 {{--    <link rel="stylesheet"--}}
 {{--          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
-    <link rel="stylesheet" type="text/css" href="/Static/form.css">
+    <link rel="stylesheet" type="text/css" href="/Static/css/form.css">
 </head>
 <body>
 <div class="topnav">
