@@ -6,7 +6,7 @@ body {
     align-content: center;
     margin-left: auto;
     margin-right: auto;
-    background-image: url("/static/jos_background.jpg");
+    background-image: url("/Static/jos_background.jpg");
     width: 50%;
 
 }
