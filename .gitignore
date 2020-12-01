@@ -31,3 +31,4 @@ phan/
 analyze.txt
 .htaccess
 App/Config
+composer.lock
