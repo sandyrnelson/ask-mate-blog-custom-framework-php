@@ -5,7 +5,6 @@ namespace App\Controller;
 
 
 use App\Queries\AllQuestions;
-use App\Queries\BandQueries;
 
 class MainPageController extends BaseController
 {
@@ -24,6 +23,6 @@ class MainPageController extends BaseController
         }
         $array_column = array_column($questions, 'submission_time');
         array_multisort($array_column, SORT_DESC, $questions);
-        $this->view("mainpage", ["questions" => $questions]);
+        $this->view("mainPage", ["questions" => $questions]);
     }
 }
