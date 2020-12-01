@@ -4,6 +4,7 @@
 namespace App\Routes;
 
 
+use App\Controller\MainPageController;
 use App\Controller\SessionController;
 use BK_Framework\Router\Router;
 
@@ -14,17 +15,19 @@ class OtherRoutes
 	{
 
 		Router::add("/", function () {
-			echo "Hello";
+		    $controller = new MainPageController();
+		    $controller->run();
 		}, "GET");
 
-		Router::add("/session", function () {
-			$controller = new SessionController();
-			$controller->run();
-		}, "GET");
 
-		Router::add("/names", function () {
-			echo "Name";
-		}, "POST");
+//		Router::add("/session", function () {
+//			$controller = new SessionController();
+//			$controller->run();
+//		}, "GET");
+//
+//		Router::add("/names", function () {
+//			echo "Name";
+//		}, "POST");
 
 	}
 
