@@ -24,6 +24,8 @@
 {{--    <a href="/tags">Tags</a>--}}
     <p><a href="/registration">Registration</a></p>
     <p><a href="/login">Login</a></p>
+    <p><a href="/ask-question">Ask Question</a></p>
+
 {{--    {% if session['username'] %}--}}
 {{--    <a href="/add-question">New Question</a>--}}
 {{--    <a href="/users">Users Info</a>--}}
