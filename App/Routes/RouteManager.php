@@ -12,7 +12,7 @@ class RouteManager
 //		BandRoutes::init();
 //		GetRoutes::init();
 		OtherRoutes::init();
-
+        UserRelatedRoutes::init();
 	}
 
 }
