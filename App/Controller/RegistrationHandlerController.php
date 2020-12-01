@@ -34,6 +34,6 @@ class RegistrationHandlerController extends BaseController
             $userEmails[] = $user->get('email');
         }
         // TODO shall we do more checking?
-        return (in_array($newUser['email'], $userEmails['name'], true));
+        return !in_array($newUser['email'], $userEmails, true);
     }
 }
