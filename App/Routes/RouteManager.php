@@ -10,7 +10,7 @@ class RouteManager
 	public static function init()
 	{
 //		BandRoutes::init();
-//		GetRoutes::init();
+		GetRoutes::init();
 		OtherRoutes::init();
         UserRelatedRoutes::init();
 	}
