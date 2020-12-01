@@ -25,14 +25,14 @@
                 <input type="email" name="email" placeholder="magicname@e-mail.com">
             </div>
         </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="user_name">Username:</label><br>
-            </div>
-            <div class="col-75">
-                <input type="text" name="user_name" placeholder="Enter your name, pls">
-            </div>
-        </div>
+{{--        <div class="row">--}}
+{{--            <div class="col-25">--}}
+{{--                <label for="user_name">Username:</label><br>--}}
+{{--            </div>--}}
+{{--            <div class="col-75">--}}
+{{--                <input type="text" name="user_name" placeholder="Enter your name, pls">--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="row">
             <div class="col-25">
                 <label for="password">Password:</label><br>

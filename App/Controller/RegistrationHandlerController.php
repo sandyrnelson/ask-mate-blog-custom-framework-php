@@ -9,15 +9,31 @@ use BK_Framework\SuperGlobal\Post;
 
 class RegistrationHandlerController extends BaseController
 {
-
     public function run()
     {
         $connection = $this->getConnection();
-        $users = UserQueries::getAllUsers($connection);
-        $newUser = ["email"=>Post::get("user_name"), "password"=>Post::get("password")];
+        $newUser = ["email"=>Post::get("email"), "password"=>Post::get("password")];
+        //$test = filter_input(INPUT_POST, Post::get('user_name'), FILTER_SANITIZE_SPECIAL_CHARS);
         //TODO: if user picture will be used, then handle it
-//        if ($newUser)
-//        $this->view("registrationPage", ["errorMessage"=>"Wrong Data!"]);
-        UserQueries::addUser($connection, $newUser['email'], $newUser['password']);
+
+        if ($this->registrationValidation($connection, $newUser)) {
+            session_start();
+            $hashedPassword = password_hash($newUser['password'], PASSWORD_BCRYPT);
+            UserQueries::addUser($connection, $newUser['email'], $hashedPassword);
+            $this->view("mainPage", []);
+        } else {
+            $this->view("registrationPage", ["errorMessage"=>"Already registered!"]);
+        }
+
+    }
+
+    private function registrationValidation($connection, $newUser) : bool {
+        $users = UserQueries::getAllUsers($connection);
+        $userEmails = array();
+        foreach ($users as $user) {
+            $userEmails[] = $user->get('email');
+        }
+        // TODO shall we do more checking?
+        return (in_array($newUser['email'], $userEmails['name'], true));
     }
 }
