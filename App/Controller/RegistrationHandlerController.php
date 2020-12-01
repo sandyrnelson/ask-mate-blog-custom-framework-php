@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Queries\UserQueries;
 use BK_Framework\SuperGlobal\Post;
+use BK_Framework\SuperGlobal\Session;
 
 class RegistrationHandlerController extends BaseController
 {
@@ -17,7 +18,6 @@ class RegistrationHandlerController extends BaseController
         //TODO: if user picture will be used, then handle it
 
         if ($this->registrationValidation($connection, $newUser)) {
-            session_start();
             $hashedPassword = password_hash($newUser['password'], PASSWORD_BCRYPT);
             UserQueries::addUser($connection, $newUser['email'], $hashedPassword);
             $this->view("mainPage", []);
