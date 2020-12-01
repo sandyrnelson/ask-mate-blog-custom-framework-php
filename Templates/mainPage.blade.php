@@ -11,11 +11,11 @@
 <body>
 <div class="topnav" id="login_signin">
     @if (session_status() !== PHP_SESSION_ACTIVE)
-    <a class="active" href="/login">Login</a>
-    <a href="/registration">Sign in</a>
+        <a class="active" href="/login">Login</a>
+        <a href="/registration">Sign in</a>
     @else
-    <a href=/userPage?id={{ $_SESSION['userId'] }}>Logged in as {{$_SESSION['userName']}}</a>
-    <a class="active" href="/logout">Logout</a>
+        <a href=/userPage?id={{ $_SESSION['userId'] }}>Logged in as {{$_SESSION['userName']}}</a>
+        <a class="active" href="/logout">Logout</a>
     @endif
 </div>
 <div class="topnav">
@@ -25,8 +25,8 @@
     <p><a href="/registration">Registration</a></p>
     <p><a href="/login">Login</a></p>
     @if (session_status() !== PHP_SESSION_ACTIVE)
-    <a href="/add-question">New Question</a>
-    <a href="/users">Users Info</a>
+        <a href="/add-question">New Question</a>
+        <a href="/users">Users Info</a>
     @endif
     <div class="search-container">
         <form action="/search">
