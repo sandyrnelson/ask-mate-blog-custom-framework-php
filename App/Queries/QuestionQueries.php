@@ -23,10 +23,6 @@ class QuestionQueries
 				VALUES (:userId, :title, :message, :vote_number, :id_image)";
 
 
-        return Queries::executeAndReturnWithId($pdo, $sql, ["userId"=>$userId,
-                                                            "title"=>$title,
-                                                            "message"=>$message,
-                                                            "vote_number"=>$voteCount,
-                                                            "id_image"=>$imageId]);
+        return Queries::executeAndReturnWithId($pdo, $sql, ["userId"=>$userId, "title"=>$title, "message"=>$message, "vote_number"=>$voteCount, "id_image"=>$imageId]);
     }
 }

@@ -38,11 +38,12 @@ class AskQuestionController extends BaseController
     }
 
     public function addQuestion(){
-        $body = $this->getBody();
-        if (array_key_exists('imageName', $body)) {
-            QuestionQueries::addQuestion($this->getConnection(), $body['userId'], $body['title'], $body['message'], $body['imageName'] );
-        }
-        QuestionQueries::addQuestion($this->getConnection(), $body['userId'], $body['title'], $body['message'] );
+        $connection = $this->getConnection();
+//        $body = $this->getBody();
+//        if (array_key_exists('imageName', $body)) {
+//            QuestionQueries::addQuestion($this->getConnection(), $body['userId'], $body['title'], $body['message'], $body['imageName'] );
+//        }
+//        QuestionQueries::addQuestion($this->getConnection(), $body['userId'], $body['title'], $body['message'] );
         return "added";
     }
 }

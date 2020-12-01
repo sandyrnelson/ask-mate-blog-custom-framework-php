@@ -6,6 +6,9 @@ use BK_Framework\SuperGlobal\Server;
 
 require_once("vendor/autoload.php");
 
+// phpinfo();
+
+
 
 RouteManager::init();
 $path = Server::getPath();
