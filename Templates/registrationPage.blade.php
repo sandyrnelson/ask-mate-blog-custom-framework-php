@@ -53,6 +53,7 @@
             <input type="submit" value="SUBMIT">
         </div>
     </form>
+    <p>{{ $errorMessage }}</p>
 </div>
 </body>
 </html>
