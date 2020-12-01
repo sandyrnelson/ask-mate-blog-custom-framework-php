@@ -18,7 +18,7 @@ class RegistrationHandlerController extends BaseController
         //TODO: if user picture will be used, then handle it
 
         if ($this->registrationValidation($connection, $newUser)) {
-            $hashedPassword = password_hash($newUser['password'], PASSWORD_BCRYPT);
+            $hashedPassword = password_hash($newUser['password'], PASSWORD_DEFAULT);
             UserQueries::addUser($connection, $newUser['email'], $hashedPassword);
             $this->view("mainPage", []);
         } else {
