@@ -13,13 +13,13 @@
             <a class="active" href="/">Home</a>
         </div>
         <div class="topnav" id="login_signin">
-{{--            {% if not session['username'] %}--}}
-{{--            <a class="active" href="/login">Login</a>--}}
-{{--            <a href="/registration">Sign in</a>--}}
-{{--            {% else %}--}}
-{{--            <a href="{{ url_for("user_page", user_id=session.user) }}">{{ login_status }}</a>--}}
-{{--            <a class="active" href="/logout">Logout</a>--}}
-{{--            {% endif %}--}}
+            @if (session_status() !== PHP_SESSION_ACTIVE)
+                <a class="active" href="/login">Login</a>
+                <a href="/registration">Sign in</a>
+            @else
+                <a href=/userPage?id={{ $_SESSION['userId'] }}>Logged in as {{$_SESSION['userName']}}</a>
+                <a class="active" href="/logout">Logout</a>
+            @endif
         </div>
     </div>
     <div class="container">
