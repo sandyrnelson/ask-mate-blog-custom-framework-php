@@ -28,7 +28,7 @@ class Session
 	{
 		self::checkSession("Could not log in. Session has not been initialized");
 		$_SESSION["userId"] = $id;
-		$_SESSION['username'] = $userName;
+		$_SESSION['userName'] = $userName;
 	}
 
 	/**
