@@ -8,8 +8,15 @@ use App\Queries\UserQueries;
 use BK_Framework\SuperGlobal\Post;
 use BK_Framework\SuperGlobal\Session;
 
+/**
+ * Class RegistrationHandlerController
+ * @package App\Controller
+ */
 class RegistrationHandlerController extends BaseController
 {
+    /**
+     *
+     */
     public function run()
     {
         $connection = $this->getConnection();
@@ -27,6 +34,11 @@ class RegistrationHandlerController extends BaseController
 
     }
 
+    /**
+     * @param $connection
+     * @param $newUser
+     * @return bool
+     */
     private function registrationValidation($connection, $newUser) : bool {
         $users = UserQueries::getAllUsers($connection);
         $userEmails = array();

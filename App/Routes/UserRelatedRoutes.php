@@ -33,5 +33,11 @@ class UserRelatedRoutes
             $controller = new LoginHandlerController();
             $controller->run();
         }, "POST");
+
+        Router::add("/logout", function () {
+            $controller = new RegistrationController();
+            $controller->run();
+        }, "GET");
+
     }
 }

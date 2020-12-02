@@ -9,9 +9,19 @@ use BK_Framework\Exception\NoSessionException;
 use BK_Framework\SuperGlobal\Post;
 use BK_Framework\SuperGlobal\Session;
 
+/**
+ * Class LoginHandlerController
+ * @package App\Controller
+ */
 class LoginHandlerController extends BaseController
 {
+    /**
+     * @var string
+     */
     private string $errormessage = '';
+    /**
+     * @var object|null
+     */
     private ?object $matchingUserData = null;
 
 
@@ -61,6 +71,11 @@ class LoginHandlerController extends BaseController
         return false;
     }
 
+    /**
+     * @param $user
+     * @param $newUser
+     * @return bool
+     */
     private function evaluatePassword($user, $newUser) : bool {
         $existingUserHashedPassword = $user->get('password_hash');
         return password_verify($newUser['password'], $existingUserHashedPassword);
