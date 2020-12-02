@@ -34,8 +34,8 @@
         </tr>
         @foreach ($tags as $tag)
             <tr>
-                <td>{{ $tag['name'] }}</td>
-                <td>{{ $tag['count_questions'] }}</td>
+                <td>{{ $tag->get('name') }}</td>
+                <td>{{ $tag->get('count_questions') }}</td>
             </tr>
         @endforeach
     </table>

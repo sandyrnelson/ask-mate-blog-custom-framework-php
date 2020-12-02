@@ -21,22 +21,8 @@ class TagPageController extends BaseController
         $connection = $this->getConnection();
         $tags = TagQueries::getAll($connection);
         $this->addQuestionCountToTags($tags);
-        $tagsData = $this->getTagsData($tags);
-        $this->view("tagPage", ['tags' => $tagsData]);
+        $this->view("tagPage", ['tags' => $tags]);
 
-    }
-
-    /**
-     * @param array $tags
-     * @return array
-     */
-    private function getTagsData(array $tags): array
-    {
-        $result = array();
-        foreach ($tags as $tag) {
-            $result[] = $tag->getRecord();
-        }
-        return  $result;
     }
 
     /**
