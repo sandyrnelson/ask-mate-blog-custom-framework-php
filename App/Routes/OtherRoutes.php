@@ -5,6 +5,7 @@ namespace App\Routes;
 
 
 use App\Controller\MainPageController;
+use App\Controller\TagAddController;
 use App\Controller\TagPageController;
 use App\Controller\TagDeleteController;
 use App\Controller\UsersController;
@@ -25,6 +26,16 @@ class OtherRoutes
 			$controller = new TagPageController();
 			$controller->run();
 		}, "GET");
+
+        Router::add("/question/([0-9]*)/new-tag", function ($param) {
+            $controller = new TagAddController($param);
+            $controller->run();
+        }, "GET");
+
+        Router::add("/question/([0-9]*)/new-tag", function ($param) {
+            $controller = new TagAddController($param);
+            $controller->run();
+        }, "POST");
 
         Router::add('/delete_tag/([0-9]*)/(.*)', function ($paramOne, $paramTwo) {
             $controller = new TagDeleteController($paramOne, $paramTwo);
