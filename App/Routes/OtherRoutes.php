@@ -20,10 +20,10 @@ class OtherRoutes
 		}, "GET");
 
 
-//		Router::add("/session", function () {
-//			$controller = new SessionController();
-//			$controller->run();
-//		}, "GET");
+		Router::add("/session", function () {
+			$controller = new SessionController();
+			$controller->run();
+		}, "GET");
 //
 //		Router::add("/names", function () {
 //			echo "Name";
