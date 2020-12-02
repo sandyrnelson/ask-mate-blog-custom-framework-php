@@ -49,4 +49,14 @@ class AnswerQueries
                 WHERE id_question = :id_question";
         return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId]);
     }
+
+    public static function addAnswer(PDO $pdo, string $questionId, string $userId, string $message) : string
+    {
+        $voteCount = 0;
+        $sql = "INSERT INTO answer (id_question, id_registered_user, message, vote_number)
+				VALUES (:id_question, :userId, :message, :vote_number)";
+
+
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId, "userId"=>$userId, "message"=>$message, "vote_number"=>$voteCount]);
+    }
 }
