@@ -47,9 +47,10 @@
                 <td>{{ $user['email'] }} </td>
                 <td>{{ $user['registration_time'] }} </td>
                 <td>{{ $user['numberOfQuestions'] }}
+
 {{--                    <a href="/question/{{ $question['id'] }}"> {{ $question['title'] }} </a>--}}
                 </td>
-                <td>{{ $user['numberOfAnswers'] }} </td>
+                <td> </td>
             </tr>
         @endforeach
         </tbody>
