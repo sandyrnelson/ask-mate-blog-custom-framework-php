@@ -117,11 +117,7 @@
 
                 @if (isset($_SESSION['userName']))
                     <a href="/check-answer">
-                    @if ($answer['id_question'] == 0)
-                        <span style="color:gray;opacity:0.5">&#10003;</span>
-                    @else
                         <span style="color:green">&#10003;</span>
-                    @endif
                     </a>
                 @else
                     @if($answer['id'] == 1)
