@@ -84,9 +84,12 @@ INSERT INTO registered_user VALUES (1, 'test@test.com', '$2y$10$d5WOxRJQJSnjGxd8
 INSERT INTO registered_user VALUES (2, 'user@user.hu', '$2y$10$0cbjFKiblYPkRXBh0BJxjuwSKkgGCVsS3SIc5EovukM3UwALPoS0i', '2020-12-02 10:30:29');
 #psw: user
 INSERT INTO registered_user VALUES (3, 'john@doe.com', '$2y$10$wC8XZrHvq8DPeylJ9DI7fuU.esvqhu5Sb.efVwUUN6qjQ3CpWwVPq', '2020-12-02 10:30:57');
-#psw: john
-
 INSERT INTO image VALUES (1, 'image', 'Flower', '2010-02-16 17:47:54' );
+#psw: john
+INSERT INTO registered_user VALUES (4, 'virag.baranyai2@gmail.com', '$2y$10$xIFif8pL13nRX0/feJwodOwyEHhq.bhxs9uDGusLPbxo7fN0Ys8ve', '2020-12-02 11:29:20');
+
+
+
 INSERT INTO image VALUES (2, 'image', 'Hugo', '2011-02-16 10:43:00' );
 INSERT INTO image VALUES (3, 'image', 'Kirusha', '2008-03-16 12:41:00' );
 INSERT INTO image VALUES (4, 'image', 'Polka', '2010-02-16 01:10:30' );
@@ -96,7 +99,7 @@ INSERT INTO question VALUES (1, 3, 1, 'Drawing canvas with...', 'I''m getting an
 ', 22,  '2001-05-01 10:41:00');
 INSERT INTO question VALUES (2, 2, 3, 'Coco', 'Coco is a super cute beautiful komondor boy.', 12, '2004-02-05 10:41:00');
 INSERT INTO question VALUES (3, 5, 2, 'Bumi', 'Bumi is a the eldest boy in da house.', 23, '2001-03-05 8:21:20');
-INSERT INTO question VALUES (4, 2, 2, 'Kikelet', 'Pitypang and Emil are real rocknrollas.', 73, '2003-09-29 07:21:32');
+INSERT INTO question VALUES (4, 2, 4, 'Kikelet', 'Pitypang and Emil are real rocknrollas.', 73, '2003-09-29 07:21:32');
 
 INSERT INTO tag VALUES (1, 'python');
 INSERT INTO tag VALUES (2, 'sql');
@@ -111,6 +114,6 @@ INSERT INTO answer VALUES (2, 3, 2, 'Another answer.', 18, '2017-08-10 18:01:05'
 INSERT INTO answer VALUES (3, 3, 3, 'That\'s not funny answer.', 34, '2016-08-23 08:01:12');
 INSERT INTO answer VALUES (4, 2, 3, 'Ereszcsatorna.', 56, '2018-05-22 03:41:05');
 INSERT INTO answer VALUES (5, 1, 3, 'Zúgolódik már a tenger.', 42, '2010-02-05 01:01:01');
-INSERT INTO answer VALUES (6, 4, 2, 'I nedd answers.', 18, '2017-12-19 07:57:55');
-INSERT INTO answer VALUES (7, 1, 2, 'What is your favorite answer?.', 18, '2020-08-10 04:31:05');
+INSERT INTO answer VALUES (6, 4, 4, 'I nedd answers.', 18, '2017-12-19 07:57:55');
+INSERT INTO answer VALUES (7, 4, 4, 'What is your favorite answer?.', 18, '2020-08-10 04:31:05');
 

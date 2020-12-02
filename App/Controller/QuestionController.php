@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Queries\AnswerQueries;
 use App\Queries\QuestionQueries;
 use App\Queries\TagQueries;
+use App\Queries\UserQueries;
 
 class QuestionController extends BaseController
 {
@@ -30,14 +31,13 @@ class QuestionController extends BaseController
         session_start();
         $connection = $this->getConnection();
         $questionDetails = QuestionQueries::getBy($connection, $this ->getQuestionID()) -> getRecord();
+        $userName = UserQueries::getUsernameById($connection, $this -> getQuestionID())->getRecord();
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
         $answers = $this -> getArraysOfRecords($answersByQuestionID);
         $tagsRecords = TagQueries::getAll($connection);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 
-//        $session = ["user" => 'Virag', 'id' => 4444];
-
-        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags]);
+        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags, 'questionOwner' => $userName]);
     }
 
     public function getArraysOfRecords(array $records): array

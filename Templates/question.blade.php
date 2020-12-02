@@ -31,23 +31,24 @@
 
 
 
-{{--<div class="topnav" id="login_signin">--}}
-{{--    {% if not session['username'] %}--}}
-{{--        <a class="active" href="/login">Login</a>--}}
-{{--        <a href="/registration">Sign in</a>--}}
-{{--    {% else %}--}}
-{{--        <a href="{{ url_for("user_page", user_id=session.user) }}">{{ login_status }}</a>--}}
-{{--<a class="active" href="/logout">Logout</a>--}}
-{{--{% endif %}--}}
-{{--</div>--}}
+<div class="topnav" id="login_signin">
+    @if(isset($_SESSION['userName']))
+        <a class="active" href="/login">Login</a>
+        <a href="/registration">Sign in</a>
+    @else
+{{--            <a href="#">What was this link? question blade 39.line</a>--}}
+        <a href="/user/{{ $question['id_registered_user']}}"> Your User Page</a>
+        <a class="active" href="/logout">Logout</a>
+    @endif
+</div>
 
 <div class="topnav">
     <a class="active" href="/">Home</a>
     <a href="/list">Questions</a>
     <a href="/tags">Tags</a>
-{{--    {% if session['username'] %}--}}
-    <a href="/add-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
-{{--    {% endif %}--}}
+    @if(isset($_SESSION['userName']))
+        <a href="/add-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
+    @endif
     <div class="search-container">
         <form action="/search">
             <input type="text" placeholder="Search.." name="q">
@@ -61,23 +62,20 @@
 
     <table class="tbl">
         <tr>
-            <th class="views"><h3>Views</h3></th>
+            <th class="views"></th>
             <th><h2>{{ $question['title'] }}</h2></th>
             <th colspan="2" class="votes"><h3>Votes</h3></th>
         </tr>
 
         <tr>
-{{--            <td>{{ question.view_number }}</td>--}}
-{{--            TODO --}}
-            <td>43</td>
-            <td id="question_message">{{ $question['message'] }} </td>
+            <td > {{ $question['submission_time'] }} </td>
+            <td id="question_message" style="width: 80%">{{ $question['message'] }} </td>
             <td colspan="2"> {{ $question['vote_number'] }}</td>
-
         </tr>
 
 
 
-        @if($session['user'])
+        @if(isset($_SESSION['userName']))
         <tr>
             <td><a href="/question/{{ $question['id'] }}/delete"><img
                             src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
@@ -142,16 +140,15 @@
 
         <tr>
             <th></th>
-            <th><h2>Answers</h2></th>
+            <th><h2>Answers {{ $_SESSION['userName'] }}  {{ $questionOwner['email'] }}</h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
-{{--        {% for answer in answers if answer.question_id == question.id %}--}}
         @foreach($answers as $answer)
         <tr>
             <td>
 
-                @if ($question['id'] == $session['id'])
+                @if ($_SESSION['userName'] == $questionOwner['email'])
                     <a href="/check-answer">
                     @if ($answer['id_question'] == 0)
                         <span style="color:gray;opacity:0.5">&#10003;</span>
@@ -181,23 +178,15 @@
         </tr>
         <tr>
             <td>
-{{--                @if($answer['id'] == $session["user"])--}}
-                <a href="/answer/{{ $answer['id']}}/delete"><img
-                            src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
+                @if ($_SESSION['userName'] == $questionOwner['email'])
+                    <a href="/answer/{{ $answer['id']}}/delete">
+                        <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
                             width="15" height="20" alt="Delete question"></a>
-{{--                @endif--}}
-            </td>
-            <td style="text-align:center">
-              @if (answer["image"] != '')
-                <img src="/Static/image/Blumen.gif" width="250px" alt="answer_image">
                 @endif
-                  <p>Picture of Answer</p>
             </td>
             <td colspan="2">
-                @if(answer['id_registered_user']== session["user"])
-                     <a href="{{ 'edit-answer' }}">Edit</a>
-                @else
-                    Edit
+                @if ($_SESSION['userName'] == $questionOwner['email'])
+                    <a href="/answer/{{ $answer['id']}}/edit-answer">Edit</a>
                 @endif
             </td>
         </tr>
@@ -235,7 +224,7 @@
         <tr>
             <td class="bottom-left-corner"></td>
             <td>
-                @if(session['username'])
+                @if(isset($_SESSION['userName']))
                   <a href="/question/{{ $question['id'] }}/add-answer">Add New Answer...</a>
                 @else
                     <p>Log in or Sign in to add new answer, please!</p>
