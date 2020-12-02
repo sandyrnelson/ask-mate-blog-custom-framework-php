@@ -20,12 +20,10 @@ class AskQuestionRoutes
         }, "GET");
 
         Router::add("/ask-question", function () {
-            echo "posted";
+            session_start();
             $controller = new AskQuestionController();
             $questionId = $controller->addQuestion();
-            header("Location: " . '/');
-
-//            header("Location: /question/".$questionId );
+            header("Location: /question/".$questionId );
             exit();
 
         }, "POST");

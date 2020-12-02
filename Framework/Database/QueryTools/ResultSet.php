@@ -73,5 +73,16 @@ class ResultSet
         return $this->record;
     }
 
+    /**
+     * @param array $record
+     */
+    public function setRecord(array $record): void
+    {
+        $this->record = $record;
+    }
 
+    public function setNewProperty(string $property, $value) : void
+    {
+        $this->record[$property] = $value;
+    }
 }

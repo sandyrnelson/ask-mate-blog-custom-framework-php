@@ -31,9 +31,12 @@ class QuestionController extends BaseController
         session_start();
         $connection = $this->getConnection();
         $questionDetails = QuestionQueries::getBy($connection, $this ->getQuestionID()) -> getRecord();
-        $userName = UserQueries::getUsernameById($connection, $this -> getQuestionID())->getRecord();
+
+        $userName = UserQueries::getUsernameById($connection, $questionDetails['id_registered_user'])->getRecord();
+
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
         $answers = $this -> getArraysOfRecords($answersByQuestionID);
+
         $tagsRecords = TagQueries::getAll($connection);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 

@@ -2,8 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
-{{--    <link rel="stylesheet"--}}
-{{--          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/form.css">
 </head>
 <body>
@@ -41,14 +41,14 @@
                 <input type="password" id="password" name="password" placeholder="Enter your password">
             </div>
         </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="password">Upload a profile image:</label>
-            </div>
-            <div class="col-75">
-                <input type="file" id="file" name="file" accept=".jpg, .png">
-            </div>
-        </div>
+{{--        <div class="row">--}}
+{{--            <div class="col-25">--}}
+{{--                <label for="password">Upload a profile image:</label>--}}
+{{--            </div>--}}
+{{--            <div class="col-75">--}}
+{{--                <input type="file" id="file" name="file" accept=".jpg, .png">--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="row">
             <input type="submit" value="SUBMIT">
         </div>

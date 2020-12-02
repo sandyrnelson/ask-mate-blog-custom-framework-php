@@ -12,25 +12,26 @@ class AskQuestionController extends BaseController
 
     public function run()
     {
+        session_start();
         $this->view("askQuestionForm", []);
     }
 
+    /**
+     * @return array
+     * @throws \BK_Framework\Exception\NoSessionException
+     */
     private function getBody()
     {
+
         $body = array();
 
         foreach ($_POST as $key => $value) {
             $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
         }
 
-        //TODO Fix session updating accorind to Szobas settings when login is completed
-        if (isset( $_SESSION["userId"]))
+        if (Session::has('userId'))
         {
-            $body["userId"] = $_SESSION["userId"];
-        }
-        else
-        {
-            $body["userId"] = 1;
+            $body["userId"] = Session::get('userId');
         }
 
 
@@ -38,6 +39,7 @@ class AskQuestionController extends BaseController
     }
 
     public function addQuestion(){
+        session_start();
         $connection = $this->getConnection();
         $body = $this->getBody();
         if (array_key_exists('imageName', $body)) {

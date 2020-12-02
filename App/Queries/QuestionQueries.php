@@ -57,4 +57,21 @@ class QuestionQueries
         Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "title"=>$title, "message"=>$message]);
         return $id;
     }
+
+    public static function delete(PDO $pdo, string $id) : string
+    {
+        $sql = "DELETE FROM question
+                WHERE id = :id";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id]);
+    }
+
+
+    public static function updateVote(PDO $pdo, string $id, int $voteCount) : string
+    {
+        $sql = "UPDATE question
+                SET vote_number=:voteCount
+                WHERE id=:id";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "voteCount"=>$voteCount]);
+    }
+
 }
