@@ -30,4 +30,13 @@ class TagQueries
 				VALUES (:name)";
         return Queries::executeAndReturnWithId($pdo, $sql, ["name"=>name]);
     }
+
+    public static function getNumberOfQuestion(PDO $pdo, int $id) : int
+    {
+        $sql = "SELECT COUNT(id_question) as count
+                FROM rel_question_tag
+                WHERE id_tag = :id
+                GROUP BY id_tag";
+        return Queries::queryOne($pdo, $sql, ['id'=> $id])->get('count');
+    }
 }
