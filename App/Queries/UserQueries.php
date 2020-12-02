@@ -31,18 +31,18 @@ class UserQueries
         return Queries::queryAll($pdo, $sql);
     }
 
-    public static function addUser(PDO $pdo, string $email, string $hashedPassword) : string
-    {
-        $sql = "INSERT INTO registered_user (email, password_hash)
-				VALUES (:email, :password_hash)";
-        return Queries::executeAndReturnWithId($pdo, $sql, ["email"=>$email, "password_hash"=>$hashedPassword]);
-    }
-
     public static function getUsernameById(PDO $pdo, int $id) : ResultSet
     {
         $sql = "SELECT email
 				FROM registered_user
 				WHERE id= :id";
         return Queries::queryOne($pdo, $sql, ['id' => $id]);
+    }
+
+    public static function addUser(PDO $pdo, string $email, string $hashedPassword) : string
+    {
+        $sql = "INSERT INTO registered_user (email, password_hash)
+				VALUES (:email, :password_hash)";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["email"=>$email, "password_hash"=>$hashedPassword]);
     }
 }

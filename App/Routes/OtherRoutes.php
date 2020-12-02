@@ -28,7 +28,7 @@ class OtherRoutes
 			$controller->run();
 		}, "GET");
 
-        Router::add('/delete_tag/([0-9]*)/([^0-9]*)', function ($paramOne, $paramTwo) {
+        Router::add('/delete_tag/([0-9]*)/(.*)', function ($paramOne, $paramTwo) {
             $controller = new TagDeleteController($paramOne, $paramTwo);
             $controller -> run();
         }, "GET");
