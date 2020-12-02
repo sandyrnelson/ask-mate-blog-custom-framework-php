@@ -63,7 +63,7 @@
                 @if($tags !== None)
                     @foreach($tags as $tag)
                         <div class="tag">{{ $tag['name'] }}
-                            <a href="{{ 'delete_tag' .'/'. $tag['id'] }}">x</a>
+                            <a href="/delete_tag/{{$question['id']}}/{{ $tag['id'] }}">[X]</a>
                         </div>
                     @endforeach
                 @endif

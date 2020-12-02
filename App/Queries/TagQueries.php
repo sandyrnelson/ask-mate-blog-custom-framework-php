@@ -39,4 +39,12 @@ class TagQueries
                 GROUP BY id_tag";
         return Queries::queryOne($pdo, $sql, ['id'=> $id])->get('count');
     }
+
+    public static function deleteTagFromQuestion(PDO $pdo, string $questionId, string $tagId) : void
+    {
+        $sql = "DELETE FROM rel_question_tag
+                WHERE id_question = :questionId AND id_tag = :tagId";
+
+        Queries::executeAndReturnWithId($pdo, $sql, ['questionId' => $questionId, '$tagId' => $tagId]);
+    }
 }
