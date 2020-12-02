@@ -30,4 +30,11 @@ class TagQueries
 				VALUES (:name)";
         return Queries::executeAndReturnWithId($pdo, $sql, ["name"=>name]);
     }
+
+    public static function deleteWithQuestion(PDO $pdo, string $questionId) : string
+    {
+        $sql = "DELETE FROM tag
+                WHERE id_question = :id_question";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId]);
+    }
 }
