@@ -5,11 +5,19 @@ namespace App\Controller;
 
 
 use App\Queries\QuestionQueries;
+use BK_Framework\SuperGlobal\Files;
 use BK_Framework\SuperGlobal\Session;
 
+/**
+ * Class AskQuestionController
+ * @package App\Controller
+ */
 class AskQuestionController extends BaseController
 {
 
+    /**
+     *
+     */
     public function run()
     {
         session_start();
@@ -34,18 +42,30 @@ class AskQuestionController extends BaseController
             $body["userId"] = Session::get('userId');
         }
 
-
         return $body;
     }
 
-    public function addQuestion(){
-        session_start();
+    /**
+     * @return string
+     * @throws \BK_Framework\Exception\NoSessionException
+     */
+    public function addQuestion(): string
+    {
+        session_start(); //TODO not necessary
         $connection = $this->getConnection();
+
         $body = $this->getBody();
+        $imageData = Files::saveImage();
+        if (0 < count($imageData)) {
+            $imageId = QuestionQueries::saveImageData($connection, $imageData['directory'], $imageData['fileName']);
+            $body['imageId'] = $imageId;
+        }
         if (array_key_exists('imageName', $body)) {
-            QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'], $body['imageName'] );
+            QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'], $body['imageId'] );
         }
         return QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'] );
 
     }
+
+
 }
