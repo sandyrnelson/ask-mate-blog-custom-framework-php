@@ -128,13 +128,13 @@
 
             <td>{{ $answer['message'] }}</td>
 
-            <td style="text-align: center">55</td>
+            <td style="text-align: center">{{ $answer['vote_number'] }}</td>
             <td>
-                <a href="/answer/{{$answer['id'] }}/vote_up">
+                <a href="/question/{{ $question['id'] }}/vote-answer/{{ $answer['id']}}/up">
                     <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Green_Arrow_Top-512.png"
                          width="15" height="15"></a>
                 <br>
-                <a href="/answer/{{$answer['id'] }}/vote_down">
+                <a href="/question/{{ $question['id'] }}/vote-answer/{{ $answer['id']}}/down">
                     <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Red_Arrow_Down-512.png"
                          width="15" height="15">
                 </a>
