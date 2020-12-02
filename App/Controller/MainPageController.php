@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+
 use App\Queries\QuestionQueries;
 
 class MainPageController extends BaseController
