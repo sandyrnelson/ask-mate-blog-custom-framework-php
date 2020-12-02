@@ -10,7 +10,7 @@
 
 <body>
 <div class="topnav" id="login_signin">
-    @if (session_status() !== PHP_SESSION_ACTIVE)
+    @if (!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
         <a href="/registration">Sign in</a>
     @else
@@ -24,7 +24,7 @@
     <a href="/tags">Tags</a>
     <p><a href="/registration">Registration</a></p>
     <p><a href="/login">Login</a></p>
-    @if (session_status() === PHP_SESSION_ACTIVE)
+    @if (isset($_SESSION['userName']))
         <a href="/add-question">New Question</a>
         <a href="/users">Users Info</a>
     @endif

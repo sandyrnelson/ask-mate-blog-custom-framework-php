@@ -13,7 +13,7 @@
             <a class="active" href="/">Home</a>
         </div>
         <div class="topnav" id="login_signin">
-            @if (session_status() !== PHP_SESSION_ACTIVE)
+            @if (!$_SESSION['userName'])
                 <a class="active" href="/login">Login</a>
                 <a href="/registration">Sign in</a>
             @else

@@ -11,6 +11,7 @@ class MainPageController extends BaseController
 
     public function run()
     {
+        session_start();
         $connection = $this->getConnection();
         $questionsFromDB = AllQuestions::getAll($connection);
         $questions = array();

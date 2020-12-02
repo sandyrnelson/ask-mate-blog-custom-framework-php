@@ -29,8 +29,8 @@ class LoginHandlerController extends BaseController
             $newUser = $this->matchingUserData;
             session_start();
             Session::login($newUser->get('id'), $newUser->get('email'));
-
-            $this->view("mainPage", []);
+            header("Location: " . '/');
+            exit();
         } else {
             $this->view("loginPage", ["errorMessage"=>$this->errormessage]);
         }
