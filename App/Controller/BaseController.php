@@ -63,4 +63,19 @@ abstract class BaseController
 		self::$view->render($template, $variables);
 	}
 
+    public function getArraysOfRecords(array $records): array
+    {
+        $result = array();
+        foreach ($records as $record) {
+            array_push($result, $record->getRecord());
+        }
+        return  $result;
+    }
+
+     public function sortByColumn(array $array, string $columnName): array {
+         $array_column = array_column($array, $columnName);
+         array_multisort($array_column, SORT_DESC, $array);
+         return $array;
+     }
+
 }

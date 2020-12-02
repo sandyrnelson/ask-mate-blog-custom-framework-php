@@ -41,9 +41,10 @@
 
     <table class="tbl">
         <tr>
-            <th class="views">View</th>
+            <th class="views">Title</th>
             <th>Latest Questions</th>
-            <th class="votes">Votes</th>
+            <th >Submission time</th>
+            <th >Votes</th>
         </tr>
         <tbody>
 
@@ -53,6 +54,7 @@
                     <td><a href="/question/{{ $question['id'] }}"> {{ $question['title'] }} </a></td>
                     <td>{{ $question['message'] }} </td>
                     <td>{{ $question['submission_time'] }} </td>
+                    <td>{{ $question['vote_number'] }} </td>
 {{--                @endforeach--}}
             </tr>
         @endforeach
