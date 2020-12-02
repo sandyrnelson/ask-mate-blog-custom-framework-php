@@ -65,5 +65,13 @@ class ResultSet
 		if ($this->has($property)) $this->record[$property] = $value;
 	}
 
+    /**
+     * @return array
+     */
+    public function getRecord(): array
+    {
+        return $this->record;
+    }
+
 
 }

@@ -4,12 +4,19 @@
 namespace App\Routes;
 
 
+use App\Controller\QuestionController;
 use BK_Framework\Router\Router;
 
 class GetRoutes
 {
 	public static function init()
+
 	{
+	    Router::add('/question/([0-9]*)', function ($param) {
+            $controller = new QuestionController($param);
+            $controller -> run();
+        }, "GET");
+
 
 		Router::add("/get/([0-9]*)", function ($param) {
 			echo "Got number $param";

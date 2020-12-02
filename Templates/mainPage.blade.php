@@ -4,32 +4,30 @@
     <title>Ask Mate</title>
 {{--    <link rel="stylesheet"--}}
 {{--          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
-    <link rel="stylesheet" type="text/css" href="/Static/index.css">
+    <link rel="stylesheet" type="text/css" href="/Static/css/index.css">
 
 </head>
 
 <body>
-{{--<div class="topnav" id="login_signin">--}}
-{{--    {% if not session['username'] %}--}}
-{{--    <a class="active" href="/login">Login</a>--}}
-{{--    <a href="/registration">Sign in</a>--}}
-{{--    {% else %}--}}
-{{--    <a href="{{ url_for("user_page", user_id=session.user) }}">{{ login_status }}</a>--}}
-{{--    <a class="active" href="/logout">Logout</a>--}}
-{{--    {% endif %}--}}
-{{--</div>--}}
+<div class="topnav" id="login_signin">
+    @if (!isset($_SESSION['userName']))
+        <a class="active" href="/login">Login</a>
+        <a href="/registration">Sign in</a>
+    @else
+        <a href=/userPage?id={{ $_SESSION['userId'] }}>Logged in as {{$_SESSION['userName']}}</a>
+        <a class="active" href="/logout">Logout</a>
+    @endif
+</div>
 <div class="topnav">
-{{--    <a class="active" href="/">Home</a>--}}
-{{--    <a href="/list">Questions</a>--}}
-{{--    <a href="/tags">Tags</a>--}}
+    <a class="active" href="/">Home</a>
+    <a href="/list">Questions</a>
+    <a href="/tags">Tags</a>
     <p><a href="/registration">Registration</a></p>
     <p><a href="/login">Login</a></p>
-    <p><a href="/ask-question">Ask Question</a></p>
-
-{{--    {% if session['username'] %}--}}
-{{--    <a href="/add-question">New Question</a>--}}
-{{--    <a href="/users">Users Info</a>--}}
-{{--    {% endif %}--}}
+    @if (isset($_SESSION['userName']))
+        <a href="/add-question">New Question</a>
+        <a href="/users">Users Info</a>
+    @endif
     <div class="search-container">
         <form action="/search">
             <input type="text" placeholder="Search.." name="q">
@@ -48,6 +46,16 @@
             <th class="votes">Votes</th>
         </tr>
         <tbody>
+
+        @foreach ($questions as $question)
+            <tr>
+{{--                @foreach($question as $td)--}}
+                    <td><a href="/question/{{ $question['id'] }}"> {{ $question['title'] }} </a></td>
+                    <td>{{ $question['message'] }} </td>
+                    <td>{{ $question['submission_time'] }} </td>
+{{--                @endforeach--}}
+            </tr>
+        @endforeach
 {{--        {% for question in questions %}--}}
 {{--        <tr>--}}
 {{--            <td class="center">{{ question.view_number }}</td>--}}
