@@ -138,14 +138,14 @@
         </tr>
         <tr>
             <td>
-                @if ($_SESSION['userName'] == $questionOwner['email'])
+                @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
                     <a href="/answer/{{ $answer['id']}}/delete">
                         <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
                             width="15" height="20" alt="Delete question"></a>
                 @endif
             </td>
             <td colspan="2">
-                @if ($_SESSION['userName'] == $questionOwner['email'])
+                @if ($_SESSION['userName'] == $answer['answerOwner'])
                     <a href="/answer/{{ $answer['id']}}/edit-answer">Edit</a>
                 @endif
             </td>

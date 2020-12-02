@@ -37,7 +37,7 @@ class QuestionController extends BaseController
 
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
         $answers = $this -> getArraysOfRecords($answersByQuestionID);
-
+var_dump($answers);
         $tagsRecords = RelQuestionTagQueries::getBy($connection, $questionDetails['id']);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 
