@@ -4,8 +4,6 @@
 namespace BK_Framework\SuperGlobal;
 
 
-use BK_Framework\Logger\Logger;
-
 /**
  * Class Files
  * @package BK_Framework\SuperGlobal

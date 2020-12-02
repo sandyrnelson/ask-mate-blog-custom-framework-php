@@ -48,8 +48,8 @@ class Logger implements LoggerInterface
 	/**
 	 * @return Logger|null
 	 */
-	public static function getInstance()
-	{
+	public static function getInstance(): ?Logger
+    {
 		if (!self::$logger) self::$logger = new Logger();
 		return self::$logger;
 	}

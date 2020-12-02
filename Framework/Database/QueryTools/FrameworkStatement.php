@@ -50,8 +50,7 @@ class FrameworkStatement extends PDOStatement
 	 * @param $class_name
 	 * @param $ctor_args
 	 * @return array|ResultSet[]
-	 * @noinspection PhpSignatureMismatchDuringInheritanceInspection
-	 */
+     */
 	public function fetchAll($how = NULL, $class_name = NULL, $ctor_args = NULL)
 	{
 		$records = parent::fetchAll();
