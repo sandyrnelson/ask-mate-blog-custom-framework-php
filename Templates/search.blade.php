@@ -13,19 +13,19 @@
 		<a class="active" href="/login">Login</a>
 		<a href="/registration">Sign in</a>
 	@else
-		<a href=/userPage?id={{ $_SESSION['userId'] }}>Logged in as {{$_SESSION['userName']}}</a>
+		<a href=/userPage?id={{ $_SESSION['userId'] }}>Logged in as {{ $_SESSION['userName'] }}</a>
 		<a class="active" href="/logout">Logout</a>
 	@endif
 </div>
 <div class="topnav">
 	<a class="active" href="/">Home</a>
-	<a href="/list">Questions</a>
+	@if(isset($_SESSION['userName']))
+		<a href="/users">Users</a>
+	@endif
 	<a href="/tags">Tags</a>
-	<p><a href="/registration">Registration</a></p>
-	<p><a href="/login">Login</a></p>
 	@if (isset($_SESSION['userName']))
 		<a href="/ask-question">New Question</a>
-		<a href="/users">Users Info</a>
+
 	@endif
 	<div class="search-container">
 		<form action="/search" method="post">
