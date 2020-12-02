@@ -59,4 +59,13 @@ class AnswerQueries
 
         return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId, "userId"=>$userId, "message"=>$message, "vote_number"=>$voteCount]);
     }
+
+    public static function updateAnswer(PDO $pdo, string $id, string $message)
+    {
+        $sql = "UPDATE answer
+                SET message=:message
+                WHERE id=:id ";
+        Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "message"=>$message]);
+        return $id;
+    }
 }
