@@ -23,7 +23,10 @@ class AskQuestionRoutes
             echo "posted";
             $controller = new AskQuestionController();
             $questionId = $controller->addQuestion();
-            header("Location: /question/$questionId" );
+            header("Location: " . '/');
+
+//            header("Location: /question/".$questionId );
+            exit();
 
         }, "POST");
     }
