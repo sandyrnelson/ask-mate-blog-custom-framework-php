@@ -14,7 +14,6 @@
         <a class="active" href="/login">Login</a>
         <a href="/registration">Sign in</a>
     @else
-{{--            <a href="#">What was this link? question blade 39.line</a>--}}
         <a href="/user/{{ $question['id_registered_user']}}"> Your User Page</a>
         <a class="active" href="/logout">Logout</a>
     @endif
@@ -108,7 +107,7 @@
 
         <tr>
             <th></th>
-            <th><h2>Answers {{ $_SESSION['userName'] }} {{ $questionOwner['email'] }} </h2></th>
+            <th><h2>Answers</h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
@@ -118,11 +117,7 @@
 
                 @if (isset($_SESSION['userName']))
                     <a href="/check-answer">
-                    @if ($answer['id_question'] == 0)
-                        <span style="color:gray;opacity:0.5">&#10003;</span>
-                    @else
                         <span style="color:green">&#10003;</span>
-                    @endif
                     </a>
                 @else
                     @if($answer['id'] == 1)
@@ -147,14 +142,14 @@
         </tr>
         <tr>
             <td>
-                @if ($_SESSION['userName'] == $questionOwner['email'])
+                @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
                     <a href="/answer/{{ $answer['id']}}/delete">
                         <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
                             width="15" height="20" alt="Delete question"></a>
                 @endif
             </td>
             <td colspan="2">
-                @if ($_SESSION['userName'] == $questionOwner['email'])
+                @if ($_SESSION['userName'] == $answer['answerOwner'])
                     <a href="/answer/{{ $answer['id']}}/edit-answer">Edit</a>
                 @endif
             </td>

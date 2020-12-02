@@ -34,6 +34,7 @@ class QuestionQueries
 
     public static function addQuestion(PDO $pdo, string $userId, string $title, string $message, string $imageName = null) : string
     {
+
         $voteCount = 0;
         if ($imageName === null) {
             $imageId = 1;
