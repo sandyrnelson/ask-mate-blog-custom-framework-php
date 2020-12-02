@@ -7,6 +7,7 @@ namespace App\Routes;
 use App\Controller\DeleteQuestionController;
 use App\Controller\EditQuestionController;
 use App\Controller\QuestionController;
+use App\Controller\VoteController;
 use BK_Framework\Router\Router;
 
 class GetRoutes
@@ -58,5 +59,11 @@ class GetRoutes
             header("Location: /" );
         }, "GET");
 
+
+        Router::add('/question/([0-9]*)/vote/([^0-9]*)', function ($paramOne, $paramTwo) {
+            $controller = new VoteController($paramOne, $paramTwo);
+            $controller->run();
+            header("Location: /question/$paramOne" );
+        }, "GET");
 	}
 }

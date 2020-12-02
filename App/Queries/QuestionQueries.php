@@ -64,4 +64,14 @@ class QuestionQueries
                 WHERE id = :id";
         return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id]);
     }
+
+
+    public static function updateVote(PDO $pdo, string $id, int $voteCount) : string
+    {
+        $sql = "UPDATE question
+                SET vote_number=:voteCount
+                WHERE id=:id";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "voteCount"=>$voteCount]);
+    }
+
 }
