@@ -18,16 +18,14 @@ class UserQueries
         return Queries::queryAll($pdo, $sql);
     }
 
-    public static function getUsersWithDetails(PDO $pdo) : array
+    public static function getUsersWithDetails(PDO $pdo): array
     {
         $sql = "SELECT  registered_user.id,  registered_user.email, registered_user.registration_time,
-                    COUNT( distinct question.id) as numberOfQuestions, 
-                    COUNT( answer.id) as numberOfAnswers
+                    COUNT( distinct question.id) as numberOfQuestions, COUNT( answer.id) as numberOfAnswers
                 FROM registered_user
                 JOIN answer ON registered_user.id = answer.id_registered_user
                 JOIN question ON answer.id_question = question.id
                 GROUP BY registered_user.id;";
-
         return Queries::queryAll($pdo, $sql);
     }
 
