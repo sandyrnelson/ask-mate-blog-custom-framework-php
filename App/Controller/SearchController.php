@@ -5,17 +5,25 @@ namespace App\Controller;
 
 
 use App\Queries\AnswerQueries;
-use App\Queries\BandQueries;
 use App\Queries\QuestionQueries;
-use BK_Framework\Logger\Logger;
 use BK_Framework\SuperGlobal\Post;
 
+/**
+ * Class SearchController
+ * @package App\Controller
+ */
 class SearchController extends BaseController
 {
 
-	private $searchText;
+    /**
+     * @var
+     */
+    private $searchText;
 
-	public function __construct()
+    /**
+     * SearchController constructor.
+     */
+    public function __construct()
 	{
 		parent::__construct();
 	}
@@ -28,7 +36,10 @@ class SearchController extends BaseController
         return $this->searchText;
     }
 
-	public function run() {
+    /**
+     *
+     */
+    public function run() {
         session_start();
         $this->searchText = Post::get("search");
         $connection = $this->getConnection();
@@ -51,6 +62,10 @@ class SearchController extends BaseController
 		$this->view('search', ['questions'=>$questions]);
 	}
 
+    /**
+     * @param $text
+     * @return string|string[]
+     */
     function highlightKeywords($text) {
         $keyword = $this->getSearchText();
         $wordsAry = explode(" ", $keyword);
