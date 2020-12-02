@@ -50,7 +50,15 @@
         <tr>
             <td > {{ $question['submission_time'] }} </td>
             <td id="question_message" style="width: 80%">{{ $question['message'] }} </td>
-            <td colspan="2"> {{ $question['vote_number'] }}</td>
+            <td> {{ $question['vote_number'] }}</td>
+            <td>
+                <a href="/question/{{ $question['id']}}/vote/up">
+                    <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Green_Arrow_Top-512.png" width="15" height="15"></a>
+                <br>
+                <a href="/question/{{ $question['id']}}/vote/down">
+                    <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Red_Arrow_Down-512.png" width="15" height="15">
+                </a>
+            </td>
         </tr>
 
 
