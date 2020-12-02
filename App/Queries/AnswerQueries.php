@@ -49,4 +49,40 @@ class AnswerQueries
                 WHERE id_question = :id_question";
         return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId]);
     }
+
+    public static function addAnswer(PDO $pdo, string $questionId, string $userId, string $message) : string
+    {
+        $voteCount = 0;
+        $sql = "INSERT INTO answer (id_question, id_registered_user, message, vote_number)
+				VALUES (:id_question, :userId, :message, :vote_number)";
+
+
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId, "userId"=>$userId, "message"=>$message, "vote_number"=>$voteCount]);
+    }
+
+    public static function updateAnswer(PDO $pdo, string $id, string $message)
+    {
+        $sql = "UPDATE answer
+                SET message=:message
+                WHERE id=:id ";
+        Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "message"=>$message]);
+        return $id;
+    }
+
+    public static function delete(PDO $pdo, string $id) : string
+    {
+        $sql = "DELETE FROM answer
+                WHERE id = :id";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id]);
+    }
+
+    public static function updateVote(PDO $pdo, string $id, int $voteCount) : string
+    {
+        $sql = "UPDATE answer
+                SET vote_number=:voteCount
+                WHERE id=:id";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "voteCount"=>$voteCount]);
+    }
+
+
 }

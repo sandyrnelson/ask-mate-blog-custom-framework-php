@@ -128,13 +128,13 @@
 
             <td>{{ $answer['message'] }}</td>
 
-            <td style="text-align: center">55</td>
+            <td style="text-align: center">{{ $answer['vote_number'] }}</td>
             <td>
-                <a href="/answer/{{$answer['id'] }}/vote_up">
+                <a href="/question/{{ $question['id'] }}/vote-answer/{{ $answer['id']}}/up">
                     <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Green_Arrow_Top-512.png"
                          width="15" height="15"></a>
                 <br>
-                <a href="/answer/{{$answer['id'] }}/vote_down">
+                <a href="/question/{{ $question['id'] }}/vote-answer/{{ $answer['id']}}/down">
                     <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Red_Arrow_Down-512.png"
                          width="15" height="15">
                 </a>
@@ -143,14 +143,14 @@
         <tr>
             <td>
                 @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
-                    <a href="/answer/{{ $answer['id']}}/delete">
+                    <a href="/question/{{ $question['id'] }}/delete-answer/{{ $answer['id']}}">
                         <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
                             width="15" height="20" alt="Delete question"></a>
                 @endif
             </td>
             <td colspan="2">
                 @if ($_SESSION['userName'] == $answer['answerOwner'])
-                    <a href="/answer/{{ $answer['id']}}/edit-answer">Edit</a>
+                    <a href="/question/{{$question['id']}}/edit-answer/{{ $answer['id']}}"/>Edit</a>
                 @endif
             </td>
         </tr>
@@ -160,7 +160,7 @@
             <td class="bottom-left-corner"></td>
             <td>
                 @if(isset($_SESSION['userName']))
-                  <a href="/question/{{ $question['id'] }}/add-answer">Add New Answer...</a>
+                  <a href="/question/{{ $question['id'] }}/add-answer">Add New Answer</a>
                 @else
                     <p>Log in or Sign in to add new answer, please!</p>
                 @endif
