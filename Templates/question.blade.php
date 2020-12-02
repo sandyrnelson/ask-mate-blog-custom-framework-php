@@ -160,7 +160,7 @@
             <td class="bottom-left-corner"></td>
             <td>
                 @if(isset($_SESSION['userName']))
-                  <a href="/question/{{ $question['id'] }}/add-answer">Add New Answer...</a>
+                  <a href="/question/{{ $question['id'] }}/add-answer">Add New Answer</a>
                 @else
                     <p>Log in or Sign in to add new answer, please!</p>
                 @endif
