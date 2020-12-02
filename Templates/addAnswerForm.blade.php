@@ -23,13 +23,13 @@
     <div class="title">
         <h3>{{ $question['message'] }}</h3>
     </div>
-    <form action="/question/{{ $question['id'] }}/add-answer" method="post" enctype=multipart/form-data>
+    <form action="" method="post" enctype=multipart/form-data>
         <div class="row">
             <div class="col-25">
                 <label for="message">Answer:</label><br>
             </div>
             <div class="col-75">
-                <textarea id="message" name="message" required rows="10" cols="30"></textarea><br>
+                <textarea id="message" name="message" required rows="10" cols="30">{{ $answer['message'] }}</textarea><br>
             </div>
         </div>
         <div class="row">
