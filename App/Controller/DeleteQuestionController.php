@@ -6,8 +6,8 @@ namespace App\Controller;
 
 use App\Queries\AnswerQueries;
 use App\Queries\QuestionQueries;
-use App\Queries\TagQueries;
-use BK_Framework\SuperGlobal\Post;
+use App\Queries\RelQuestionTagQueries;
+
 
 class DeleteQuestionController extends BaseController
 {
@@ -28,7 +28,7 @@ class DeleteQuestionController extends BaseController
         session_start();
         $id = $this ->getQuestionID();
         $connection = $this->getConnection();
-        TagQueries::deleteWithQuestion($connection, $id);
+        RelQuestionTagQueries::deleteWithQuestion($connection, $id);
         AnswerQueries::deleteWithQuestion($connection, $id);
         QuestionQueries::delete($connection, $id);
 
