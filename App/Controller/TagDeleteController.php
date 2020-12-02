@@ -22,7 +22,7 @@ class TagDeleteController extends BaseController
     {
         $connection = $this->getConnection();
         TagQueries::deleteTagFromQuestion($connection, $this->questionId, $this->tagId);
-        header('Location: ' . '/question' . $this->questionId);
+        header('Location: ' . '/question/' . $this->questionId);
         exit();
     }
 }
