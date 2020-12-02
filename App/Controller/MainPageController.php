@@ -3,8 +3,7 @@
 
 namespace App\Controller;
 
-
-use App\Queries\AllQuestions;
+use App\Queries\QuestionQueries;
 
 class MainPageController extends BaseController
 {
@@ -13,7 +12,7 @@ class MainPageController extends BaseController
     {
         session_start();
         $connection = $this->getConnection();
-        $questionsFromDB = AllQuestions::getAll($connection);
+        $questionsFromDB = QuestionQueries::getAll($connection);
         $questions = array();
         foreach ($questionsFromDB as $question) {
             $record['id'] = $question -> get('id');

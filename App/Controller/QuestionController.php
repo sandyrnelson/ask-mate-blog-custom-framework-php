@@ -27,6 +27,7 @@ class QuestionController extends BaseController
     }
 
     public function run() {
+        session_start();
         $connection = $this->getConnection();
         $questionDetails = QuestionQueries::getBy($connection, $this ->getQuestionID()) -> getRecord();
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
@@ -34,9 +35,9 @@ class QuestionController extends BaseController
         $tagsRecords = TagQueries::getAll($connection);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 
-        $session = ["user" => 'Virag', 'id' => 4444];
+//        $session = ["user" => 'Virag', 'id' => 4444];
 
-        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'session' => $session, 'tags' => $tags]);
+        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags]);
     }
 
     public function getArraysOfRecords(array $records): array
