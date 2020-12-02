@@ -4,6 +4,7 @@
 namespace App\Routes;
 
 
+use App\Controller\DeleteQuestionController;
 use App\Controller\EditQuestionController;
 use App\Controller\QuestionController;
 use BK_Framework\Router\Router;
@@ -45,6 +46,12 @@ class GetRoutes
             $id = $controller -> updateQuestion();
             header("Location: /question/$id" );
         }, "POST");
+
+        Router::add('/question/([0-9]*)/delete', function ($param) {
+            $controller = new DeleteQuestionController($param);
+            $controller -> run();
+            header("Location: /" );
+        }, "GET");
 
 	}
 }
