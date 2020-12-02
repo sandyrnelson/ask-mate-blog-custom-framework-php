@@ -32,7 +32,7 @@
 
 
 <div class="topnav" id="login_signin">
-    @if(isset($_SESSION['userName']))
+    @if(!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
         <a href="/registration">Sign in</a>
     @else
