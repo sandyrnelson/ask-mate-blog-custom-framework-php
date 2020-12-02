@@ -6,6 +6,7 @@ namespace App\Routes;
 
 use App\Controller\MainPageController;
 use App\Controller\TagController;
+use App\Controller\SessionController;
 use BK_Framework\Router\Router;
 
 class OtherRoutes
@@ -25,6 +26,10 @@ class OtherRoutes
 		}, "GET");
 
 
+		Router::add("/session", function () {
+			$controller = new SessionController();
+			$controller->run();
+		}, "GET");
 //
 //		Router::add("/names", function () {
 //			echo "Name";

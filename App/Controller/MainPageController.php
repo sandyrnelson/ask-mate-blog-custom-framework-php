@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+
 use App\Queries\QuestionQueries;
 
 class MainPageController extends BaseController
@@ -19,6 +20,7 @@ class MainPageController extends BaseController
             $record['title'] = $question -> get('title');
             $record['message'] = $question -> get('message');
             $record['submission_time'] = $question -> get('submission_time');
+            $record['id_registered_user'] = $question -> get('id_registered_user');
             array_push($questions, $record);
         }
         $array_column = array_column($questions, 'submission_time');
