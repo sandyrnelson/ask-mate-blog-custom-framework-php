@@ -13,12 +13,10 @@ class UserQueries
 
     public static function getAllUsers(PDO $pdo) : array
     {
-        $sql = "SELECT id, email, password_hash, registration_time
+        $sql = "SELECT *
 				FROM registered_user";
         return Queries::queryAll($pdo, $sql);
     }
-
-
 
     public static function addUser(PDO $pdo, string $email, string $hashedPassword) : string
     {
