@@ -23,8 +23,8 @@
         <a href="/ask-question">New Question</a>
     @endif
     <div class="search-container">
-        <form action="/search">
-            <input type="text" placeholder="Search.." name="q">
+        <form action="/search" method="post">
+            <input type="text" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
