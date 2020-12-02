@@ -46,6 +46,7 @@ a {
 
 table th, td {
     border-collapse: collapse;
+    text-align: center;
 
 }
 
@@ -57,7 +58,7 @@ table.tbl {
   }
 
 tr, th, td {
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 

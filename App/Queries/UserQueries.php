@@ -27,9 +27,6 @@ class UserQueries
                 JOIN question ON answer.id_question = question.id
                 GROUP BY registered_user.id;";
         return Queries::queryAll($pdo, $sql);
-
-
-
     }
 
     public static function addUser(PDO $pdo, string $email, string $hashedPassword) : string

@@ -4,7 +4,7 @@
     <title>Tags</title>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/Static/css/list.css">
+    <link rel="stylesheet" type="text/css" href="/Static/css/users.css">
 </head>
 <body>
 <div class="topnav" id="login_signin">
@@ -18,7 +18,6 @@
 </div>
 <div class="topnav">
     <a class="active" href="/">Home</a>
-    <a href="/users">Users</a>
     <a href="/tags">Tags</a>
     @if (isset($_SESSION['userName']))
         <a href="/ask-question">New Question</a>
@@ -31,7 +30,7 @@
     </div>
 </div>
 <div class="main">
-    <h1>Ask Mate Main Page</h1>
+    <h1>Registered Users</h1>
     <table class="tbl">
         <tr>
             <th class="views">User ID</th>
@@ -44,10 +43,9 @@
         @foreach ($users as $user)
             <tr>
                 <td>{{ $user['id'] }} </td>
-                <td>{{ $user['email'] }} </td>
+                <td style="text-align: left">{{ $user['email'] }} </td>
                 <td>{{ $user['registration_time'] }} </td>
                 <td>{{ $user['numberOfQuestions'] }}
-
 {{--                    <a href="/question/{{ $question['id'] }}"> {{ $question['title'] }} </a>--}}
                 </td>
                 <td>{{ $user['numberOfAnswers'] }} </td>
