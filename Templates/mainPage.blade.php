@@ -25,7 +25,7 @@
     <p><a href="/registration">Registration</a></p>
     <p><a href="/login">Login</a></p>
     @if (isset($_SESSION['userName']))
-        <a href="/add-question">New Question</a>
+        <a href="/ask-question">New Question</a>
         <a href="/users">Users Info</a>
     @endif
     <div class="search-container">

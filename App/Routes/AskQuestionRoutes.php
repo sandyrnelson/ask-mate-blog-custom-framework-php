@@ -22,7 +22,8 @@ class AskQuestionRoutes
         Router::add("/ask-question", function () {
             echo "posted";
             $controller = new AskQuestionController();
-            $controller->addQuestion();
+            $questionId = $controller->addQuestion();
+            header("Location: /question/$questionId" );
 
         }, "POST");
     }

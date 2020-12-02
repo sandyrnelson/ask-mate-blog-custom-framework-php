@@ -39,11 +39,11 @@ class AskQuestionController extends BaseController
 
     public function addQuestion(){
         $connection = $this->getConnection();
-//        $body = $this->getBody();
-//        if (array_key_exists('imageName', $body)) {
-//            QuestionQueries::addQuestion($this->getConnection(), $body['userId'], $body['title'], $body['message'], $body['imageName'] );
-//        }
-//        QuestionQueries::addQuestion($this->getConnection(), $body['userId'], $body['title'], $body['message'] );
-        return "added";
+        $body = $this->getBody();
+        if (array_key_exists('imageName', $body)) {
+            QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'], $body['imageName'] );
+        }
+        return QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'] );
+
     }
 }

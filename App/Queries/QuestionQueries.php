@@ -31,7 +31,6 @@ class QuestionQueries
 				VALUES (:message)";
         return Queries::executeAndReturnWithId($pdo, $sql, ["message"=>$message]);
     }
-}
 
     public static function addQuestion(PDO $pdo, string $userId, string $title, string $message, string $imageName = null) : string
     {

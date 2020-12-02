@@ -46,7 +46,7 @@
     <a href="/list">Questions</a>
     <a href="/tags">Tags</a>
 {{--    {% if session['username'] %}--}}
-    <a href="/add-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
+    <a href="/ask-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
 {{--    {% endif %}--}}
     <div class="search-container">
         <form action="/search">
