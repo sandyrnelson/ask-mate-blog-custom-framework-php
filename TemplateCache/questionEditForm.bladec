@@ -1,0 +1,59 @@
+<head>
+ <meta charset="UTF-8">
+ <title>Add Question</title>
+ <link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="/Static/css/form.css">
+</head>
+<body>
+<?php /*<div class="topnav" id="login_signin">*/ ?>
+<?php /*    {% if not session['username'] %}*/ ?>
+<?php /*    <a class="active" href="/login">Login</a>*/ ?>
+<?php /*    <a href="/registration">Sign in</a>*/ ?>
+<?php /*    {% else %}*/ ?>
+<?php /*    <a href="<?php echo \htmlentities(url_for("user_page", user_id=session.user), ENT_QUOTES, 'UTF-8', false); ?>"><?php echo \htmlentities(login_status, ENT_QUOTES, 'UTF-8', false); ?></a>*/ ?>
+<?php /*    <a class="active" href="/logout">Logout</a>*/ ?>
+<?php /*    {% endif %}*/ ?>
+<?php /*</div>*/ ?>
+<div class="topnav">
+ <a class="active" href="/">Home</a>
+ <?php /*    <a href="/list">Questions</a>*/ ?>
+ <?php /*    {#      <a href="/add-question">New Question</a>#}*/ ?>
+ <div class="search-container">
+ <form action="/search">
+ <input type="text" placeholder="Search.." name="q">
+ <button type="submit"><i class="fa fa-search"></i></button>
+ </form>
+ </div>
+</div>
+<div class="container">
+ <div class="title">
+ <h1>Add Question</h1>
+ </div>
+ <form action="" method="post" enctype=multipart/form-data>
+ <div class="row">
+ <div class="col -25">
+ <label for="title">Question Title:</label><br>
+ </div>
+ <div class="col -75">
+ <input type="text" id="title" name="title" required minlength="5" size="20" value="<?php echo \htmlentities($question['title'], ENT_QUOTES, 'UTF-8', false); ?>"><br>
+ </div>
+ </div>
+ <div class="row">
+ <div class="col -25">
+ <label for="message">Question:</label><br>
+ </div>
+ <div class="col -75">
+ <textarea id="message" name="message" required rows="10" cols="30">
+ <?php echo \htmlentities($question['message'], ENT_QUOTES, 'UTF-8', false); ?>
+
+ </textarea><br>
+ </div>
+ </div>
+ <div class="row">
+ <input type="submit" value="SUBMIT">
+ </div>
+ </form>
+</div>
+</body>
+</html>
