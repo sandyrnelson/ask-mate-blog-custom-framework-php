@@ -23,7 +23,15 @@ class TagDeleteController extends BaseController
     {
         $connection = $this->getConnection();
         $tagId = TagQueries::getByName($connection, $this->tagname)->get('id');
-        TagQueries::deleteTagFromQuestion($connection, $this->questionId, $tagId);
+        $tagRelationsWithThisTagId = TagQueries::getTagRelationsByTagId($connection, $tagId);
+        $tagRelationToDelete = null;
+        foreach ($tagRelationsWithThisTagId as $relations) {
+            if ($relations->get('id_question') === $this->questionId) {
+                $tagRelationToDelete = $relations->get('id');
+            }
+        }
+        //TODO check, and if empty array, delete from tags - but only if we are in time
+        TagQueries::deleteTagQuestionRelation($connection, $tagRelationToDelete);
         header('Location: ' . '/question/' . $this->questionId);
         exit();
     }

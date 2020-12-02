@@ -40,11 +40,11 @@ class TagQueries
         return Queries::queryOne($pdo, $sql, ['id'=> $id])->get('count');
     }
 
-    public static function deleteTagFromQuestion(PDO $pdo, string $questionId, string $tagId) : void
+    public static function deleteTagQuestionRelation(PDO $pdo, string $relationId) : string
     {
-        $sql = "DELETE FROM rel_question_tag WHERE id_tag = :tagId AND id_question = :questionId";
+        $sql = "DELETE FROM rel_question_tag WHERE id = :id";
 
-        Queries::executeAndReturnWithId($pdo, $sql, ['questionId' => $questionId, '$tagId' => $tagId]);
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id" => $relationId]);
     }
 
     public static function deleteWithQuestion(PDO $pdo, string $questionId) : string
@@ -59,5 +59,12 @@ class TagQueries
         $sql = "SELECT id
 				FROM tag WHERE name = :name";
         return Queries::queryOne($pdo, $sql, ["name"=>$name]);
+    }
+
+    public static function getTagRelationsByTagId(PDO $pdo, string $tagId)
+    {
+        $sql = "SELECT id, id_question 
+                FROM rel_question_tag WHERE id_tag = :tagId";
+        return Queries::queryAll($pdo, $sql, ['tagId'=>$tagId]);
     }
 }
