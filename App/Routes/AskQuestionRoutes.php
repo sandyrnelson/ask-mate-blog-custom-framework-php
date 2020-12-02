@@ -23,8 +23,6 @@ class AskQuestionRoutes
             session_start();
             $controller = new AskQuestionController();
             $questionId = $controller->addQuestion();
-//            header("Location: " . '/');
-
             header("Location: /question/".$questionId );
             exit();
 
