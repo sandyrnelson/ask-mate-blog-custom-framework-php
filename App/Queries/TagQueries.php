@@ -42,8 +42,7 @@ class TagQueries
 
     public static function deleteTagFromQuestion(PDO $pdo, string $questionId, string $tagId) : void
     {
-        $sql = "DELETE FROM rel_question_tag
-                WHERE id_tag = :tagId AND id_question = :questionId";
+        $sql = "DELETE FROM rel_question_tag WHERE id_tag = :tagId AND id_question = :questionId";
 
         Queries::executeAndReturnWithId($pdo, $sql, ['questionId' => $questionId, '$tagId' => $tagId]);
     }
@@ -53,5 +52,12 @@ class TagQueries
         $sql = "DELETE FROM rel_question_tag
                 WHERE id_question = :id_question";
         return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId]);
+    }
+
+    public static function getByName(PDO $pdo, string $name) : ResultSet
+    {
+        $sql = "SELECT id
+				FROM tag WHERE name = :name";
+        return Queries::queryOne($pdo, $sql, ["name"=>$name]);
     }
 }
