@@ -53,7 +53,7 @@
         @endforeach
         </tbody>
     </table>
-    {{--    <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-productivity-5/128/questions-answers-512.png">--}}
+{{--        <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-productivity-5/128/questions-answers-512.png">--}}
 </div>
 </body>
 </html>
