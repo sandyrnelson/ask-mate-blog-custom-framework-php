@@ -14,7 +14,6 @@
         <a class="active" href="/login">Login</a>
         <a href="/registration">Sign in</a>
     @else
-{{--            <a href="#">What was this link? question blade 39.line</a>--}}
         <a href="/user/{{ $question['id_registered_user']}}"> Your User Page</a>
         <a class="active" href="/logout">Logout</a>
     @endif
@@ -108,7 +107,7 @@
 
         <tr>
             <th></th>
-            <th><h2>Answers {{ $_SESSION['userName'] }} {{ $questionOwner['email'] }} </h2></th>
+            <th><h2>Answers</h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 

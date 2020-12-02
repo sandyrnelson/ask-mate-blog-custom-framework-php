@@ -90,6 +90,7 @@ INSERT INTO registered_user VALUES (4, 'virag.baranyai2@gmail.com', '$2y$10$xIFi
 
 
 INSERT INTO image VALUES (2, 'image', 'Hugo', '2011-02-16 10:43:00' );
+INSERT INTO image VALUES (1, 'image', 'Hugo', '2011-02-16 10:43:00' );
 INSERT INTO image VALUES (3, 'image', 'Kirusha', '2008-03-16 12:41:00' );
 INSERT INTO image VALUES (4, 'image', 'Polka', '2010-02-16 01:10:30' );
 INSERT INTO image VALUES (5, 'image', 'Blumen', '2015-10-02 13:40:08' );
