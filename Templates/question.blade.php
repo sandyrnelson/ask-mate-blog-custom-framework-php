@@ -107,40 +107,9 @@
         </tr>
 
 
-{{--        {% for comment in q_comments %}--}}
-{{--        <tr>--}}
-{{--            <td style="text-align:center;font-size:small">--}}
-{{--                {% if comment.user_id == session["user"] and comment.user_id != None %}--}}
-{{--                <a href="{{ url_for('edit_comment',comment_id=comment.id, question_id=$question['id']) }}">{{ comment.edited_count }}</a>--}}
-{{--                {% else %}--}}
-{{--                {{ comment.edited_count }}--}}
-{{--                {% endif %}--}}
-{{--            </td>--}}
-{{--            <td style="text-align:center;font-size:small">{{ comment.message }}</td>--}}
-{{--            <td colspan="2" style="text-align:center;font-size:small;color: #9C1A1C">--}}
-{{--                {% if comment.user_id == session["user"] and comment.user_id != None %}--}}
-{{--                <a href="{{ url_for('delete_comment', question_id=$question['id'], comment_id=comment.id) }}">X</a>--}}
-{{--                {% endif %}--}}
-{{--            </td>--}}
-{{--        </tr>--}}
-{{--        {% endfor %}--}}
-{{--        <tr>--}}
-{{--            <form action="{{ url_for('add_comment_question', question_id=$question['id']) }}" method="post">--}}
-{{--                <td>Add Comment:</td>--}}
-{{--                <td><input type="text" id="add-comment" name="comment" required minlength="2" size="50"></td>--}}
-{{--                <td colspan="2">--}}
-{{--                    <button id="add-comment" type="submit">Add</button>--}}
-{{--                </td>--}}
-{{--            </form>--}}
-
-{{--        </tr>--}}
-{{--        --}}
-{{--        --}}
-
-
         <tr>
             <th></th>
-            <th><h2>Answers {{ $_SESSION['userName'] }}  {{ $questionOwner['email'] }}</h2></th>
+            <th><h2>Answers</h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
@@ -190,36 +159,7 @@
                 @endif
             </td>
         </tr>
-{{--            {% for list_comments in a_comments %}--}}
-{{--                {% for comment in list_comments if comment.answer_id == answer.id %}--}}
-{{--                <tr>--}}
-{{--                    <td style="text-align:center;font-size:small">--}}
-{{--                        {% if comment.user_id == session["user"] and comment.user_id != None %}--}}
-{{--                        <a href="{{ url_for('edit_comment',comment_id=comment.id, question_id=question.id) }}">{{ comment.edited_count }}</a>--}}
-{{--                        {% else %}--}}
-{{--                        {{ comment.edited_count }}--}}
-{{--                        {% endif %}--}}
-{{--                    </td>--}}
-{{--                    <td style="text-align:center;font-size:small">{{ comment.message }}</td>--}}
-{{--                    <td colspan="2" style="text-align:center;font-size:small;color: #9C1A1C">--}}
-{{--                        {% if comment.user_id == session["user"] and comment.user_id != None %}--}}
-{{--                        <a href="{{ url_for('delete_comment', question_id=question.id, comment_id=comment.id) }}">X</a>--}}
-{{--                        {% endif %}--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--                {% endfor %}--}}
-{{--            {% endfor %}--}}
-{{--                <tr>--}}
-{{--                    <form action="{{ url_for('add_comment_answer', question_id=question['id'], answer_id=$answer['id']) }}"--}}
-{{--                          method="post">--}}
-{{--                        <td>Add Comment:</td>--}}
-{{--                        <td><input type="text" id="add-comment" name="comment" required minlength="2" size="50"></td>--}}
-{{--                        <td colspan="2">--}}
-{{--                            <button id="add-comment" type="submit">Add</button>--}}
-{{--                        </td>--}}
-{{--                    </form>--}}
-{{--                </tr>--}}
-{{--        {% endfor %}--}}
+
         @endforeach
         <tr>
             <td class="bottom-left-corner"></td>
