@@ -6,6 +6,7 @@ namespace App\Routes;
 
 use App\Controller\LoginController;
 use App\Controller\LoginHandlerController;
+use App\Controller\LogoutController;
 use App\Controller\RegistrationController;
 use App\Controller\RegistrationHandlerController;
 use BK_Framework\Router\Router;
@@ -35,7 +36,7 @@ class UserRelatedRoutes
         }, "POST");
 
         Router::add("/logout", function () {
-            $controller = new RegistrationController();
+            $controller = new LogoutController();
             $controller->run();
         }, "GET");
 
