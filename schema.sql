@@ -108,7 +108,7 @@ INSERT INTO tag VALUES (2, 'sql');
 INSERT INTO tag VALUES (3, 'css');
 INSERT INTO tag VALUES (4, 'mariadb');
 INSERT INTO tag VALUES (5, 'java');
-INSERT INTO tag VALUES (6, 'python');
+INSERT INTO tag VALUES (6, 'c#');
 INSERT INTO tag VALUES (7, 'trambulin');
 
 INSERT INTO rel_question_tag VALUES (1, 1, 1);
