@@ -1,14 +1,13 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8">
- <title>Ask Mate</title>
+ <title>Tags</title>
  <link rel="stylesheet"
  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="stylesheet" type="text/css" href="/Static/css/users.css">
-
 </head>
- <body>
- <div class="topnav" id="login_signin">
+<body>
+<div class="topnav" id="login_signin">
  <?php if(!isset($_SESSION['userName'])): ?>
  <a class="active" href="/login">Login</a>
  <a href="/registration">Sign in</a>
@@ -16,16 +15,12 @@
  <a href=/userPage?id=<?php echo \htmlentities($_SESSION['userId'], ENT_QUOTES, 'UTF-8', false); ?>>Logged in as <?php echo \htmlentities($_SESSION['userName'], ENT_QUOTES, 'UTF-8', false); ?></a>
  <a class="active" href="/logout">Logout</a>
  <?php endif; ?>
- </div>
- <div class="topnav">
+</div>
+<div class="topnav">
  <a class="active" href="/">Home</a>
- <?php if(isset($_SESSION['userName'])): ?>
- <a href="/users">Users</a>
- <?php endif; ?>
  <a href="/tags">Tags</a>
  <?php if(isset($_SESSION['userName'])): ?>
  <a href="/ask-question">New Question</a>
-
  <?php endif; ?>
  <div class="search-container">
  <form action="/search">
@@ -33,29 +28,34 @@
  <button type="submit"><i class="fa fa-search"></i></button>
  </form>
  </div>
- </div>
- <div class="main">
- <h1>Ask Mate Main Page</h1>
+</div>
+<div class="main">
+ <h1>Registered Users</h1>
  <table class="tbl">
  <tr>
- <th class="views">Title</th>
- <th>Latest Questions</th>
- <th >Submission time</th>
- <th >Votes</th>
+ <th class="views">User ID</th>
+ <th >User Email</th>
+ <th >Registration date</th>
+ <th >Count of asked questions</th>
+ <th >Count of answers</th>
  </tr>
  <tbody>
- <?php $__currentLoopData = $questions; $this->addLoop($__currentLoopData);$this->getFirstLoop();
- foreach($__currentLoopData as $question): $loop = $this->incrementLoopIndices();  ?>
+ <?php $__currentLoopData = $users; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $user): $loop = $this->incrementLoopIndices();  ?>
  <tr>
- <td><a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>"> <?php echo \htmlentities($question['title'], ENT_QUOTES, 'UTF-8', false); ?> </a></td>
- <td><?php echo \htmlentities($question['message'], ENT_QUOTES, 'UTF-8', false); ?> </td>
- <td><?php echo \htmlentities($question['submission_time'], ENT_QUOTES, 'UTF-8', false); ?> </td>
- <td><?php echo \htmlentities($question['vote_number'], ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td><?php echo \htmlentities($user['id'], ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td style="text-align: left"><?php echo \htmlentities($user['email'], ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td><?php echo \htmlentities($user['registration_time'], ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td><?php echo \htmlentities($user['numberOfQuestions'], ENT_QUOTES, 'UTF-8', false); ?>
+
+<?php /*                    <a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>"> <?php echo \htmlentities($question['title'], ENT_QUOTES, 'UTF-8', false); ?> </a>*/ ?>
+ </td>
+ <td><?php echo \htmlentities($user['numberOfAnswers'], ENT_QUOTES, 'UTF-8', false); ?> </td>
  </tr>
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </tbody>
  </table>
  <?php /*    <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-productivity-5/128/questions-answers-512.png">*/ ?>
- </div>
- </body>
+</div>
+</body>
 </html>

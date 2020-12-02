@@ -27,22 +27,6 @@ class GetRoutes
             $controller -> run();
         }, "POST");
 
-		Router::add("/get/([0-9]*)", function ($param) {
-			echo "Got number $param";
-		}, "GET");
-
-		Router::add("/get/([^0-9]*)", function ($param) {
-			echo "Got string $param";
-		}, "GET");
-
-		Router::add("/get/(.*)", function ($param) {
-			echo "Got mixed $param";
-		}, "GET");
-
-		Router::add("/get/(.*)/(.*)", function ($paramOne, $paramTwo) {
-			echo "Got params $paramOne and $paramTwo";
-		}, "GET");
-
         Router::add('/question/([0-9]*)/edit', function ($param) {
             $controller = new EditQuestionController($param);
             $controller -> run();
@@ -60,11 +44,28 @@ class GetRoutes
             header("Location: /" );
         }, "GET");
 
-
         Router::add('/question/([0-9]*)/vote/([^0-9]*)', function ($paramOne, $paramTwo) {
             $controller = new VoteController($paramOne, $paramTwo);
             $controller->run();
             header("Location: /question/$paramOne" );
+        }, "GET");
+
+
+
+        Router::add("/get/([0-9]*)", function ($param) {
+            echo "Got number $param";
+        }, "GET");
+
+        Router::add("/get/([^0-9]*)", function ($param) {
+            echo "Got string $param";
+        }, "GET");
+
+        Router::add("/get/(.*)", function ($param) {
+            echo "Got mixed $param";
+        }, "GET");
+
+        Router::add("/get/(.*)/(.*)", function ($paramOne, $paramTwo) {
+            echo "Got params $paramOne and $paramTwo";
         }, "GET");
 
         Router::add('/search', function () {

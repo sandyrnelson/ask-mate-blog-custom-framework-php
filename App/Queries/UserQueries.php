@@ -13,12 +13,21 @@ class UserQueries
 
     public static function getAllUsers(PDO $pdo) : array
     {
-        $sql = "SELECT id, email, password_hash, registration_time
+        $sql = "SELECT *
 				FROM registered_user";
         return Queries::queryAll($pdo, $sql);
     }
 
-
+    public static function getUsersWithDetails(PDO $pdo): array
+    {
+        $sql = "SELECT  registered_user.id,  registered_user.email, registered_user.registration_time,
+                    COUNT( distinct question.id) as numberOfQuestions, COUNT( answer.id) as numberOfAnswers
+                FROM registered_user
+                JOIN answer ON registered_user.id = answer.id_registered_user
+                JOIN question ON answer.id_question = question.id
+                GROUP BY registered_user.id;";
+        return Queries::queryAll($pdo, $sql);
+    }
 
     public static function addUser(PDO $pdo, string $email, string $hashedPassword) : string
     {

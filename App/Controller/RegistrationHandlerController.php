@@ -27,7 +27,7 @@ class RegistrationHandlerController extends BaseController
         if ($this->registrationValidation($connection, $newUser)) {
             $hashedPassword = password_hash($newUser['password'], PASSWORD_DEFAULT);
             UserQueries::addUser($connection, $newUser['email'], $hashedPassword);
-            header("Location: " . '/');
+            header("Location: " . '/login');
         } else {
             $this->view("registrationPage", ["errorMessage"=>"Already registered!"]);
         }

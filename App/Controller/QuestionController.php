@@ -43,12 +43,5 @@ class QuestionController extends BaseController
         $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags, 'questionOwner' => $userName]);
     }
 
-    public function getArraysOfRecords(array $records): array
-    {
-        $result = array();
-        foreach ($records as $record) {
-            array_push($result, $record->getRecord());
-        }
-        return  $result;
-    }
+
 }

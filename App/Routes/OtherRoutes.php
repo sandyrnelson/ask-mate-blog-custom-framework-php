@@ -9,6 +9,7 @@ use App\Controller\QuestionController;
 use App\Controller\TagController;
 use App\Controller\SessionController;
 use App\Controller\TagDeleteController;
+use App\Controller\UsersController;
 use BK_Framework\Router\Router;
 
 class OtherRoutes
@@ -32,17 +33,12 @@ class OtherRoutes
             $controller -> run();
         }, "GET");
 
+		Router::add("/users", function () {
+			$controller = new UsersController();
+			$controller->run();
+		}, "GET");
 
 
-//
-//		Router::add("/session", function () {
-//			$controller = new SessionController();
-//			$controller->run();
-//		}, "GET");
-//
-//		Router::add("/names", function () {
-//			echo "Name";
-//		}, "POST");
 
 	}
 
