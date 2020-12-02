@@ -22,7 +22,6 @@ class MainPageController extends BaseController
             $record['submission_time'] = $question -> get('submission_time');
             array_push($questions, $record);
         }
-        var_dump($questions);
         $array_column = array_column($questions, 'submission_time');
         array_multisort($array_column, SORT_DESC, $questions);
         $this->view("mainpage", ["questions" => $questions]);

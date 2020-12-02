@@ -9,6 +9,8 @@
 </head>
 <body>
 
+
+{{--My own just examples - Virág--}}
 {{--<div>--}}
 {{--    @foreach(array_keys($question) as $key)--}}
 {{--        <br>--}}
@@ -26,6 +28,8 @@
 {{--            @endforeach--}}
 {{--            @endforeach--}}
 {{--</div>--}}
+
+
 
 {{--<div class="topnav" id="login_signin">--}}
 {{--    {% if not session['username'] %}--}}
@@ -70,35 +74,41 @@
             <td colspan="2"> {{ $question['vote_number'] }}</td>
 
         </tr>
-{{--        {% if session['username'] %}--}}
-{{--        <tr>--}}
-{{--            <td><a href="/question/{{ $question['id'] }}/delete"><img--}}
-{{--                            src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"--}}
-{{--                            width="15" height="20" alt="Delete question"></a></td>--}}
-{{--            <td>--}}
-{{--                {% if tags != None %}--}}
-{{--                {% for tag in tags %}--}}
-{{--                <div class="tag">{{ tag.name }} <a--}}
-{{--                            href="{{ url_for('delete_tag',question_id=$question['id'], tag_id=tag.tag_id) }}">x</a>--}}
-{{--                </div>--}}
-{{--                {% endfor %}--}}
-{{--                {% endif %}--}}
-{{--            </td>--}}
-{{--            <td colspan="2"><a href="/question/{{ $question['id'] }}/new-tag">Add Tag</a></td>--}}
-{{--        </tr>--}}
-{{--        {% endif %}--}}
 
 
-{{--        <tr>--}}
-{{--            <td></td>--}}
 
-{{--            <td style="text-align:center">--}}
-{{--                {% if question["image"] != '' %}--}}
-{{--                <img src="/static/image/{{ question.image }}" width="350px" alt="question_image">--}}
-{{--                {% endif %}--}}
-{{--            </td>--}}
-{{--            <td colspan="2"></td>--}}
-{{--        </tr>--}}
+        @if($session['user'])
+        <tr>
+            <td><a href="/question/{{ $question['id'] }}/delete"><img
+                            src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
+                            width="15" height="20" alt="Delete question"></a>
+            </td>
+            <td>
+                @if($tags !== None)
+                    @foreach($tags as $tag)
+                        <div class="tag">{{ $tag['name'] }}
+                            <a href="{{ 'delete_tag' .'/'. $tag['id'] }}">x</a>
+                        </div>
+                    @endforeach
+                @endif
+            </td>
+            <td colspan="2"><a href="/question/{{ $question['id'] }}/new-tag">Add Tag</a></td>
+        </tr>
+        @endif
+
+
+        <tr>
+            <td> </td>
+
+            <td style="text-align:center">
+                @if($question["id_image"] != '')
+                    <img class="small" src="/Static/image/{{ $question['id_image'] }}.jpg"  width="350px" alt="question_image">
+                @endif
+            </td>
+            <td colspan="2"></td>
+        </tr>
+
+
 {{--        {% for comment in q_comments %}--}}
 {{--        <tr>--}}
 {{--            <td style="text-align:center;font-size:small">--}}
@@ -126,6 +136,10 @@
 {{--            </form>--}}
 
 {{--        </tr>--}}
+{{--        --}}
+{{--        --}}
+
+
         <tr>
             <th></th>
             <th><h2>Answers</h2></th>
@@ -150,7 +164,6 @@
                         <span style="color:green">&#10003;</span>
                     @endif
                 @endif
-                <p> Fa</p>
             </td>
 
             <td>{{ $answer['message'] }}</td>
