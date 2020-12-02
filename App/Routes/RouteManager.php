@@ -14,6 +14,7 @@ class RouteManager
 		OtherRoutes::init();
         UserRelatedRoutes::init();
 		AskQuestionRoutes::init();
+		AnswerRoutes::init();
 
 	}
 

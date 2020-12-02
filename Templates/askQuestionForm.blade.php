@@ -6,19 +6,8 @@
     <link rel="stylesheet" type="text/css" href="Static/css/form.css">
 </head>
 <body>
-{{--<div class="topnav" id="login_signin">--}}
-{{--    {% if not session['username'] %}--}}
-{{--    <a class="active" href="/login">Login</a>--}}
-{{--    <a href="/registration">Sign in</a>--}}
-{{--    {% else %}--}}
-{{--    <a href="{{ url_for("user_page", user_id=session.user) }}">{{ login_status }}</a>--}}
-{{--    <a class="active" href="/logout">Logout</a>--}}
-{{--    {% endif %}--}}
-{{--</div>--}}
 <div class="topnav">
     <a class="active" href="/">Home</a>
-    <a href="/list">Questions</a>
-{{--    <a href="/add-question">New Question</a>--}}
     <div class="search-container">
         <form action="/search">
             <input type="text" placeholder="Search.." name="q">
