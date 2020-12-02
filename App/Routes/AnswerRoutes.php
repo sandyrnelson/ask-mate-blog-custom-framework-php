@@ -6,6 +6,7 @@ namespace App\Routes;
 
 use App\Controller\AddAnswerController;
 use App\Controller\AskQuestionController;
+use App\Controller\DeleteAnswerController;
 use App\Controller\EditAnswerController;
 use App\Controller\EditQuestionController;
 use BK_Framework\Router\Router;
@@ -39,6 +40,14 @@ class AnswerRoutes
             $id = $controller -> updateAnswer();
             header("Location: /question/$id" );
         }, "POST");
+
+        Router::add('/question/([0-9]*)/delete-answer/([0-9]*)', function ($questionId, $answerId) {
+            $controller = new DeleteAnswerController($answerId);
+            $controller -> run();
+            header("Location: /question/".$questionId );
+            exit();
+        }, "GET");
+
     }
 
 }
