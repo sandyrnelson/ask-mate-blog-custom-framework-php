@@ -5,7 +5,6 @@ namespace App\Controller;
 
 
 use App\Queries\AnswerQueries;
-use App\Queries\QuestionQueries;
 
 /**
  * Class AnswerVoteController

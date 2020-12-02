@@ -41,9 +41,9 @@ class LoginHandlerController extends BaseController
             Session::login($newUser->get('id'), $newUser->get('email'));
             header("Location: " . '/');
             exit();
-        } else {
-            $this->view("loginPage", ["errorMessage"=>$this->errormessage]);
         }
+
+        $this->view("loginPage", ["errorMessage"=>$this->errormessage]);
 
     }
 

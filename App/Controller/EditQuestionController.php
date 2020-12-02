@@ -4,9 +4,7 @@
 namespace App\Controller;
 
 
-use App\Queries\AnswerQueries;
 use App\Queries\QuestionQueries;
-use App\Queries\TagQueries;
 use BK_Framework\SuperGlobal\Post;
 
 /**

@@ -5,7 +5,6 @@ namespace App\Controller;
 
 
 use App\Queries\QuestionQueries;
-use BK_Framework\SuperGlobal\Post;
 
 /**
  * Class VoteController

@@ -30,7 +30,7 @@ class AskQuestionController extends BaseController
      * @return array
      * @throws NoSessionException
      */
-    private function getBody()
+    private function getBody(): array
     {
 
         $body = array();

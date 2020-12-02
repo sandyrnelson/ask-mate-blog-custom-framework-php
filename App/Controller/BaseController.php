@@ -31,8 +31,8 @@ abstract class BaseController
 		}
 	}
 
-	private function configureApp()
-	{
+	private function configureApp(): void
+    {
 		$configurationContent = File::read($this->getRootDirectory() . "Config/config.json");
 		$config = JSON::decode($configurationContent);
 
@@ -46,8 +46,8 @@ abstract class BaseController
 		Logger::setLogFileExtension($logInfo["extension"]);
 	}
 
-	protected function getRootDirectory()
-	{
+	protected function getRootDirectory(): string
+    {
 		return __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR;
 	}
 
@@ -56,7 +56,7 @@ abstract class BaseController
 		return Connection::getConnection(self::$dbConfig);
 	}
 
-	public abstract function run();
+	abstract public function run();
 
 	protected function view(string $template, array $variables) : void
 	{
@@ -67,7 +67,7 @@ abstract class BaseController
     {
         $result = array();
         foreach ($records as $record) {
-            array_push($result, $record->getRecord());
+            $result[] = $record->getRecord();
         }
         return  $result;
     }
