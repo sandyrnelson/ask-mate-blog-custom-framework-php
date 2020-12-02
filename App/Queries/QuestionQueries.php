@@ -73,4 +73,15 @@ class QuestionQueries
 
         return Queries::executeAndReturnWithId($pdo, $sql, ['directory'=>$directory, 'fileName'=>$fileName]);
     }
+    public static function search(PDO $pdo, string $searchedTerm) :array
+    {
+        $sql = "SELECT DISTINCT qu.id AS id, qu.vote_number AS vote_number, qu.message AS message, qu.id_image AS id_image, title
+                FROM question AS qu
+                JOIN answer AS an ON qu.id = an.id_question
+                WHERE qu.title like  :search_word
+                        OR  qu.message like  :search_word
+                        OR an.message like  :search_word";
+        return Queries::queryAll($pdo, $sql, ["search_word"=> "%".$searchedTerm."%"]);
+    }
+
 }
