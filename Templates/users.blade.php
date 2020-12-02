@@ -50,7 +50,7 @@
 
 {{--                    <a href="/question/{{ $question['id'] }}"> {{ $question['title'] }} </a>--}}
                 </td>
-                <td> </td>
+                <td>{{ $user['numberOfAnswers'] }} </td>
             </tr>
         @endforeach
         </tbody>
