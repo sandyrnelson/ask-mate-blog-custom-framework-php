@@ -7,13 +7,27 @@ namespace App\Controller;
 use App\Queries\AnswerQueries;
 use App\Queries\QuestionQueries;
 
+/**
+ * Class AnswerVoteController
+ * @package App\Controller
+ */
 class AnswerVoteController extends BaseController
 {
+    /**
+     * @var int
+     */
     private int $answerId;
+    /**
+     * @var int
+     */
     private int $voteCountChange;
 
 
-
+    /**
+     * AnswerVoteController constructor.
+     * @param $id
+     * @param $voteDirection
+     */
     public function __construct($id, $voteDirection)
     {
         parent::__construct();
@@ -26,17 +40,26 @@ class AnswerVoteController extends BaseController
     }
 
 
+    /**
+     * @return int
+     */
     public function getAnswerId(): int
     {
         return $this->answerId;
     }
 
 
+    /**
+     * @return int
+     */
     public function getVoteCountChange(): int
     {
         return $this->voteCountChange;
     }
 
+    /**
+     * @return string
+     */
     public function run() {
         session_start();
         $answerId = $this->getAnswerId();

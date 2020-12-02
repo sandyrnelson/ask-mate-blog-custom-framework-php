@@ -6,9 +6,16 @@ namespace App\Controller;
 
 use App\Queries\UserQueries;
 
+/**
+ * Class UsersController
+ * @package App\Controller
+ */
 class UsersController extends BaseController
 {
 
+    /**
+     *
+     */
     public function run()
     {
         session_start();

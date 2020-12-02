@@ -7,10 +7,17 @@ namespace App\Controller;
 use App\Queries\BandQueries;
 use BK_Framework\Logger\Logger;
 
+/**
+ * Class SearchController
+ * @package App\Controller
+ */
 class SearchController extends BaseController
 {
 
-	private int $id;
+    /**
+     * @var int
+     */
+    private int $id;
 
 	/**
 	 * SearchController constructor.
@@ -22,7 +29,10 @@ class SearchController extends BaseController
 		$this->id = $id;
 	}
 
-	public function run() {
+    /**
+     *
+     */
+    public function run() {
 		$connection = $this->getConnection();
 		$band = BandQueries::getBy($connection, $this->id);
 		Logger::getInstance()->emergency("Found new record");

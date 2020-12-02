@@ -6,9 +6,16 @@ namespace App\Controller;
 
 use App\Queries\QuestionQueries;
 
+/**
+ * Class MainPageController
+ * @package App\Controller
+ */
 class MainPageController extends BaseController
 {
 
+    /**
+     *
+     */
     public function run()
     {
         session_start();

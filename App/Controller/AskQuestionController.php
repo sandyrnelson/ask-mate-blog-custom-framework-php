@@ -5,8 +5,10 @@ namespace App\Controller;
 
 
 use App\Queries\QuestionQueries;
+use BK_Framework\Exception\NoSessionException;
 use BK_Framework\SuperGlobal\Files;
 use BK_Framework\SuperGlobal\Session;
+use PDO;
 
 /**
  * Class AskQuestionController
@@ -26,7 +28,7 @@ class AskQuestionController extends BaseController
 
     /**
      * @return array
-     * @throws \BK_Framework\Exception\NoSessionException
+     * @throws NoSessionException
      */
     private function getBody()
     {
@@ -47,13 +49,25 @@ class AskQuestionController extends BaseController
 
     /**
      * @return string
-     * @throws \BK_Framework\Exception\NoSessionException
+     * @throws NoSessionException
      */
     public function addQuestion(): string
     {
-        session_start(); //TODO not necessary
+        session_start();
         $connection = $this->getConnection();
 
+        $body = $this->getQuestionData($connection);
+        return QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'] );
+
+    }
+
+    /**
+     * @param PDO $connection
+     * @return array
+     * @throws NoSessionException
+     */
+    private function getQuestionData(PDO $connection): array
+    {
         $body = $this->getBody();
         $imageData = Files::saveImage();
         if (0 < count($imageData)) {
@@ -61,10 +75,9 @@ class AskQuestionController extends BaseController
             $body['imageId'] = $imageId;
         }
         if (array_key_exists('imageName', $body)) {
-            QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'], $body['imageId'] );
+            QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'], $body['imageId']);
         }
-        return QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'] );
-
+        return $body;
     }
 
 

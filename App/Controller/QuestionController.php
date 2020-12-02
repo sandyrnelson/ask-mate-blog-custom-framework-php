@@ -10,10 +10,21 @@ use App\Queries\RelQuestionTagQueries;
 use App\Queries\TagQueries;
 use App\Queries\UserQueries;
 
+/**
+ * Class QuestionController
+ * @package App\Controller
+ */
 class QuestionController extends BaseController
 {
+    /**
+     * @var int
+     */
     private int $questionId;
 
+    /**
+     * QuestionController constructor.
+     * @param $id
+     */
     public function __construct($id)
     {
         parent::__construct();
@@ -28,6 +39,9 @@ class QuestionController extends BaseController
         return $this->questionId;
     }
 
+    /**
+     *
+     */
     public function run() {
         session_start();
         $connection = $this->getConnection();

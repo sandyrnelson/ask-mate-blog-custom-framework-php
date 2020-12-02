@@ -7,14 +7,28 @@ namespace App\Controller;
 use App\Queries\QuestionQueries;
 use BK_Framework\SuperGlobal\Post;
 
+/**
+ * Class VoteController
+ * @package App\Controller
+ */
 class VoteController extends BaseController
 {
 
+    /**
+     * @var int
+     */
     private int $questionId;
+    /**
+     * @var int
+     */
     private int $voteCountChange;
 
 
-
+    /**
+     * VoteController constructor.
+     * @param $id
+     * @param $voteDirection
+     */
     public function __construct($id, $voteDirection)
     {
         parent::__construct();
@@ -26,17 +40,26 @@ class VoteController extends BaseController
         }
     }
 
+    /**
+     * @return int
+     */
     public function getQuestionID(): int
     {
         return $this->questionId;
     }
 
 
+    /**
+     * @return int
+     */
     public function getVoteCountChange(): int
     {
         return $this->voteCountChange;
     }
 
+    /**
+     *
+     */
     public function run() {
         session_start();
         $questionId = $this->getQuestionID();

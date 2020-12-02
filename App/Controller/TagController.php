@@ -6,9 +6,16 @@ namespace App\Controller;
 
 use App\Queries\TagQueries;
 
+/**
+ * Class TagController
+ * @package App\Controller
+ */
 class TagController extends BaseController
 {
 
+    /**
+     *
+     */
     public function run()
     {
         $connection = $this->getConnection();
@@ -19,6 +26,10 @@ class TagController extends BaseController
 
     }
 
+    /**
+     * @param array $tags
+     * @return array
+     */
     private function getTagsData(array $tags): array
     {
         $result = array();
@@ -28,7 +39,11 @@ class TagController extends BaseController
         return  $result;
     }
 
-    private function addQuestionCountToTags( $tags) : array {
+    /**
+     * @param $tags
+     * @return array
+     */
+    private function addQuestionCountToTags($tags) : array {
         foreach ($tags as $tag) {
             $tagId = $tag->get('id');
             $questionNumber = TagQueries::getNumberOfQuestion($this->getConnection(), $tagId);

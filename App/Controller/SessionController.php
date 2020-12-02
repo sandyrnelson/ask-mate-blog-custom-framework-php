@@ -7,10 +7,17 @@ namespace App\Controller;
 use BK_Framework\Exception\NoSessionException;
 use BK_Framework\SuperGlobal\Session;
 
+/**
+ * Class SessionController
+ * @package App\Controller
+ */
 class SessionController extends BaseController
 {
 
-	public function run()
+    /**
+     *
+     */
+    public function run()
 	{
 		try {
 			session_start();

@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use App\Queries\UserQueries;
 use BK_Framework\SuperGlobal\Post;
-use BK_Framework\SuperGlobal\Session;
+
 
 /**
  * Class RegistrationHandlerController
@@ -21,8 +21,6 @@ class RegistrationHandlerController extends BaseController
     {
         $connection = $this->getConnection();
         $newUser = ["email"=>Post::get("email"), "password"=>Post::get("password")];
-        //$test = filter_input(INPUT_POST, Post::get('user_name'), FILTER_SANITIZE_SPECIAL_CHARS);
-        //TODO: if user picture will be used, then handle it
 
         if ($this->registrationValidation($connection, $newUser)) {
             $hashedPassword = password_hash($newUser['password'], PASSWORD_DEFAULT);
@@ -45,7 +43,6 @@ class RegistrationHandlerController extends BaseController
         foreach ($users as $user) {
             $userEmails[] = $user->get('email');
         }
-        // TODO shall we do more checking?
         return !in_array($newUser['email'], $userEmails, true);
     }
 }

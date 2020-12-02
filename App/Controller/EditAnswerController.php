@@ -8,11 +8,26 @@ use App\Queries\AnswerQueries;
 use App\Queries\QuestionQueries;
 use BK_Framework\SuperGlobal\Post;
 
+/**
+ * Class EditAnswerController
+ * @package App\Controller
+ */
 class EditAnswerController extends BaseController
 {
+    /**
+     * @var int
+     */
     private int $questionId;
+    /**
+     * @var int
+     */
     private int $answerId;
 
+    /**
+     * EditAnswerController constructor.
+     * @param $id
+     * @param $answerId
+     */
     public function __construct($id, $answerId)
     {
         parent::__construct();
@@ -20,16 +35,25 @@ class EditAnswerController extends BaseController
         $this -> answerId = $answerId;
     }
 
+    /**
+     * @return int
+     */
     public function getQuestionID(): int
     {
         return $this->questionId;
     }
 
+    /**
+     * @return int
+     */
     public function getAnswerId(): int
     {
         return $this->answerId;
     }
 
+    /**
+     *
+     */
     public function run() {
         session_start();
         $connection = $this->getConnection();
@@ -39,7 +63,11 @@ class EditAnswerController extends BaseController
         $this->view("addAnswerForm", ['question' => $questionDetails, 'answer' => $answerDetails]);
     }
 
-    public function updateAnswer(){
+    /**
+     * @return int
+     */
+    public function updateAnswer(): int
+    {
         $connection = $this->getConnection();
         $message = Post::get("message");
         AnswerQueries::updateAnswer($connection, $this->getAnswerId(), $message);
