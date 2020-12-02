@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Queries\AnswerQueries;
 use App\Queries\QuestionQueries;
+use App\Queries\RelQuestionTagQueries;
 use App\Queries\TagQueries;
 use App\Queries\UserQueries;
 
@@ -37,7 +38,7 @@ class QuestionController extends BaseController
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
         $answers = $this -> getArraysOfRecords($answersByQuestionID);
 
-        $tagsRecords = TagQueries::getAll($connection);
+        $tagsRecords = RelQuestionTagQueries::getBy($connection, $questionDetails['id']);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 
         $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags, 'questionOwner' => $userName]);

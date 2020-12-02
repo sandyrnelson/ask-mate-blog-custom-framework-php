@@ -60,13 +60,13 @@
                             width="15" height="20" alt="Delete question"></a>
             </td>
             <td>
-{{--                @if($tags !== 'null')--}}
-{{--                    @foreach($tags as $tag)--}}
-{{--                        <div class="tag">{{ $tag['name'] }}--}}
-{{--                            <a href="{{ 'delete_tag' .'/'. $tag['id'] }}">x</a>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                @endif--}}
+                @if($tags != null)
+                    @foreach($tags as $tag)
+                        <div class="tag">{{ $tag['name'] }}
+                            <a href="{{ 'delete_tag' .'/'. $tag['id'] }}">x</a>
+                        </div>
+                    @endforeach
+                @endif
             </td>
             <td colspan="2"><a href="/question/{{ $question['id'] }}/new-tag">Add Tag</a></td>
         </tr>
