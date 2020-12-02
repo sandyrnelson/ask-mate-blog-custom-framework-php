@@ -71,8 +71,10 @@ CREATE TABLE `tag`
 DROP TABLE IF EXISTS `rel_question_tag`;
 CREATE TABLE `rel_question_tag`
 (
+    `id`          INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     `id_question` INT(11) UNSIGNED NOT NULL,
     `id_tag`      INT(11) UNSIGNED NOT NULL,
+    PRIMARY KEY (`id`),
     CONSTRAINT `fk_question_on_rel_question_tag` FOREIGN KEY (`id_question`) REFERENCES `question`(`id`),
     CONSTRAINT `fk_tag_on_rel_question_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
@@ -109,16 +111,16 @@ INSERT INTO tag VALUES (5, 'java');
 INSERT INTO tag VALUES (6, 'python');
 INSERT INTO tag VALUES (7, 'trambulin');
 
-INSERT INTO rel_question_tag VALUES (1, 1);
-INSERT INTO rel_question_tag VALUES (4, 2);
-INSERT INTO rel_question_tag VALUES (4, 3);
-INSERT INTO rel_question_tag VALUES (4, 4);
-INSERT INTO rel_question_tag VALUES (2, 3);
-INSERT INTO rel_question_tag VALUES (3, 3);
-INSERT INTO rel_question_tag VALUES (3, 6);
-INSERT INTO rel_question_tag VALUES (2, 5);
-INSERT INTO rel_question_tag VALUES (1, 2);
-INSERT INTO rel_question_tag VALUES (4, 7);
+INSERT INTO rel_question_tag VALUES (1, 1, 1);
+INSERT INTO rel_question_tag VALUES (2, 4, 2);
+INSERT INTO rel_question_tag VALUES (3, 4, 3);
+INSERT INTO rel_question_tag VALUES (4, 4, 4);
+INSERT INTO rel_question_tag VALUES (5, 2, 3);
+INSERT INTO rel_question_tag VALUES (6, 3, 3);
+INSERT INTO rel_question_tag VALUES (7, 3, 6);
+INSERT INTO rel_question_tag VALUES (8, 2, 5);
+INSERT INTO rel_question_tag VALUES (9, 1, 2);
+INSERT INTO rel_question_tag VALUES (10, 4, 7);
 
 INSERT INTO answer VALUES (1, 1, 1, 'This is an answer.', 34, '2019-11-21 20:01:05');
 INSERT INTO answer VALUES (2, 3, 2, 'Another answer.', 18, '2017-08-10 18:01:05');
