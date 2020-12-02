@@ -150,7 +150,7 @@
             </td>
             <td colspan="2">
                 @if ($_SESSION['userName'] == $answer['answerOwner'])
-                    <a href="/answer/{{ $answer['id']}}/edit-answer">Edit</a>
+                    <a href="/question/{{$question['id']}}/edit-answer/{{ $answer['id']}}"/>Edit</a>
                 @endif
             </td>
         </tr>
