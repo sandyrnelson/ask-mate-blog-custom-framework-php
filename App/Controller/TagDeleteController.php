@@ -5,7 +5,6 @@ namespace App\Controller;
 
 
 use App\Queries\TagQueries;
-use Zend\Code\Generator\DocBlock\Tag;
 
 class TagDeleteController extends BaseController
 {
