@@ -18,7 +18,6 @@
 </div>
 <div class="topnav">
     <a class="active" href="/">Home</a>
-    <a href="/list">Questions</a>
     <div class="search-container">
         <form action="/search">
             <input type="text" placeholder="Search.." name="q">
