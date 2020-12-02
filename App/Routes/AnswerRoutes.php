@@ -6,6 +6,8 @@ namespace App\Routes;
 
 use App\Controller\AddAnswerController;
 use App\Controller\AskQuestionController;
+use App\Controller\EditAnswerController;
+use App\Controller\EditQuestionController;
 use BK_Framework\Router\Router;
 
 class AnswerRoutes
@@ -25,6 +27,17 @@ class AnswerRoutes
             header("Location: /question/".$questionId );
             exit();
 
+        }, "POST");
+
+        Router::add('/question/([0-9]*)/edit-answer/([0-9]*)', function ($paramOne, $paramTwo) {
+            $controller = new EditAnswerController($paramOne, $paramTwo);
+            $controller -> run();
+        }, "GET");
+
+        Router::add('/question/([0-9]*)/edit-answer/([0-9]*)', function ($paramOne, $paramTwo) {
+            $controller = new EditAnswerController($paramOne, $paramTwo);
+            $id = $controller -> updateAnswer();
+            header("Location: /question/$id" );
         }, "POST");
     }
 
