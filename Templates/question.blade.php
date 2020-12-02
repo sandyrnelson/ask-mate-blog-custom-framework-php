@@ -25,7 +25,9 @@
     <a href="/list">Questions</a>
     <a href="/tags">Tags</a>
     @if(isset($_SESSION['userName']))
+        @if($_SESSION['userName'] == $questionOwner['email'])
         <a href="/ask-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
+    @endif
     @endif
     <div class="search-container">
         <form action="/search">
@@ -87,7 +89,7 @@
 
         <tr>
             <th></th>
-            <th><h2>Answers</h2></th>
+            <th><h2>Answers {{ $_SESSION['userName'] }} {{ $questionOwner['email'] }} </h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
