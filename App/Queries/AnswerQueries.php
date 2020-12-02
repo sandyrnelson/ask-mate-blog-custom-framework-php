@@ -84,5 +84,13 @@ class AnswerQueries
         return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "voteCount"=>$voteCount]);
     }
 
+    public static function search(PDO $pdo, $questionId, string $searchText)
+    {
+        $sql = "SELECT message FROM answer
+                WHERE id_question = :id_question AND 
+                     message like :search_word";
+        return Queries::queryAll($pdo, $sql, ["id_question"=>$questionId,"search_word"=> "%".$searchText."%"]);
+    }
+
 
 }

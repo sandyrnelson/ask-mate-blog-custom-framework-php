@@ -174,3 +174,7 @@ th {
     align-content: flex-end;
     width: 100%;
 }
+
+.highlight {
+    background-color: #FFFF00
+}

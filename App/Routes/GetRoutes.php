@@ -7,6 +7,7 @@ namespace App\Routes;
 use App\Controller\DeleteQuestionController;
 use App\Controller\EditQuestionController;
 use App\Controller\QuestionController;
+use App\Controller\SearchController;
 use App\Controller\VoteController;
 use BK_Framework\Router\Router;
 
@@ -65,5 +66,12 @@ class GetRoutes
             $controller->run();
             header("Location: /question/$paramOne" );
         }, "GET");
+
+        Router::add('/search', function () {
+            $controller = new SearchController();
+            $controller->run();
+//            $id = $controller -> updateQuestion();
+//            header("Location: /question/$id" );
+        }, "POST");
 	}
 }
