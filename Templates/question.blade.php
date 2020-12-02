@@ -22,6 +22,7 @@
 <div class="topnav">
     <a class="active" href="/">Home</a>
     <a href="/list">Questions</a>
+    <a href="/users">Users</a>
     <a href="/tags">Tags</a>
     @if(isset($_SESSION['userName']))
         @if($_SESSION['userName'] == $questionOwner['email'])
