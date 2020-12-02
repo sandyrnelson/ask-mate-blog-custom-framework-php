@@ -32,20 +32,12 @@ class QuestionQueries
         return Queries::executeAndReturnWithId($pdo, $sql, ["message"=>$message]);
     }
 
-    public static function addQuestion(PDO $pdo, string $userId, string $title, string $message, string $imageName = null) : string
+    public static function addQuestion(PDO $pdo, string $userId, string $title, string $message, string $imageId = null) : string
     {
-
         $voteCount = 0;
-        if ($imageName === null) {
-            $imageId = 1;
-            }
-        else {
-            //TODO add image to image db and get id from there
-            $imageId = 1;
-        }
+
         $sql = "INSERT INTO question (id_registered_user, title, message, vote_number, id_image)
 				VALUES (:userId, :title, :message, :vote_number, :id_image)";
-
 
         return Queries::executeAndReturnWithId($pdo, $sql, ["userId"=>$userId, "title"=>$title, "message"=>$message, "vote_number"=>$voteCount, "id_image"=>$imageId]);
     }
@@ -75,4 +67,10 @@ class QuestionQueries
         return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "voteCount"=>$voteCount]);
     }
 
+    public static function saveImageData(PDO $pdo, string $directory, string $fileName) : int
+    {
+        $sql = "INSERT INTO image (directory, file_name) VALUES (:directory, :fileName)";
+
+        return Queries::executeAndReturnWithId($pdo, $sql, ['directory'=>$directory, 'fileName'=>$fileName]);
+    }
 }
