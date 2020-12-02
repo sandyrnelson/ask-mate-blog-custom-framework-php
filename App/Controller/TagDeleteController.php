@@ -15,20 +15,20 @@ use PDO;
 class TagDeleteController extends BaseController
 {
     private string $questionId;
-    private string $tagname;
+    private string $tagName;
 
-    public function __construct(string $questionId, string $tagname)
+    public function __construct(string $questionId, string $tagName)
     {
         parent::__construct();
         $this->questionId = $questionId;
-        $this->tagname = $tagname;
+        $this->tagName = $tagName;
     }
 
     public function run()
     {
         $connection = $this->getConnection();
 
-        $tagId = TagQueries::getByName($connection, $this->tagname)->get('id');
+        $tagId = TagQueries::getByName($connection, $this->tagName)->get('id');
         $tagRelationsWithThisTagId = RelQuestionTagQueries::getTagRelationsByTagId($connection, $tagId);
         $tagRelationToDelete = null;
         foreach ($tagRelationsWithThisTagId as $relations) {

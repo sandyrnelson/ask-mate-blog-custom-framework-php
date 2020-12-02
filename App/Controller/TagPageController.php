@@ -10,7 +10,7 @@ use App\Queries\TagQueries;
  * Class TagController
  * @package App\Controller
  */
-class TagController extends BaseController
+class TagPageController extends BaseController
 {
 
     /**

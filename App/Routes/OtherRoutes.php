@@ -6,7 +6,7 @@ namespace App\Routes;
 
 use App\Controller\MainPageController;
 use App\Controller\QuestionController;
-use App\Controller\TagController;
+use App\Controller\TagPageController;
 use App\Controller\SessionController;
 use App\Controller\TagDeleteController;
 use App\Controller\UsersController;
@@ -24,7 +24,7 @@ class OtherRoutes
 		}, "GET");
 
 		Router::add("/tags", function () {
-			$controller = new TagController();
+			$controller = new TagPageController();
 			$controller->run();
 		}, "GET");
 
