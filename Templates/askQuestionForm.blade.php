@@ -17,8 +17,8 @@
 {{--</div>--}}
 <div class="topnav">
     <a class="active" href="/">Home</a>
-{{--    <a href="/list">Questions</a>--}}
-{{--    {#      <a href="/add-question">New Question</a>#}--}}
+    <a href="/list">Questions</a>
+{{--    <a href="/add-question">New Question</a>--}}
     <div class="search-container">
         <form action="/search">
             <input type="text" placeholder="Search.." name="q">
