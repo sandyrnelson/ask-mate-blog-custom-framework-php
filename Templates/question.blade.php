@@ -27,7 +27,6 @@
     @if(isset($_SESSION['userName']))
         @if($_SESSION['userName'] == $questionOwner['email'])
             <a href="/ask-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
-            <a href="/question/{{ $question['id']}}/delete">Delete Question</a>
         @endif
     @endif
     <div class="search-container">
