@@ -18,6 +18,11 @@ class GetRoutes
             $controller -> run();
         }, "GET");
 
+        Router::add('/question/([0-9]*)', function ($param) {
+            echo "POOOOOst";
+            $controller = new QuestionController($param);
+            $controller -> run();
+        }, "POST");
 
 
 
