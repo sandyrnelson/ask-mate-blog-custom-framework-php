@@ -68,4 +68,13 @@ class AnswerQueries
         Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id, "message"=>$message]);
         return $id;
     }
+
+    public static function delete(PDO $pdo, string $id) : string
+    {
+        $sql = "DELETE FROM answer
+                WHERE id = :id";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id"=>$id]);
+    }
+
+
 }
