@@ -13,8 +13,9 @@ class UsersController extends BaseController
     {
         session_start();
         $connection = $this->getConnection();
-        $usersFromDB = UserQueries::getAllUsers($connection);
+        $usersFromDB = UserQueries::getUsersWithDetails($connection);
         $users = $this->getArraysOfRecords($usersFromDB);
+
         $this->view("users", ['users' => $users]);
 
     }
