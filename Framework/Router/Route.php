@@ -51,13 +51,14 @@ class Route
 	 */
 	public function matchEndpoint(string $endpoint, array &$variableContainer) : bool
 	{
-
 		if (substr_count($this->getEndpoint(), "/") !== substr_count($endpoint, "/")) return false;
 
 		$searchRegexp = "/^" . str_replace("/", "\\/", $this->getEndpoint()) . "$/";
 		$found = preg_match($searchRegexp, $endpoint, $variableContainer);
-		array_shift($variableContainer );
-		return $found;
+
+        array_shift($variableContainer);
+
+        return $found;
 	}
 
 	/**
