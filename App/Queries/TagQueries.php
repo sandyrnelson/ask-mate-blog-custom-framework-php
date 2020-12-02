@@ -24,13 +24,6 @@ class TagQueries
         return Queries::queryOne($pdo, $sql, ["id"=>$id]);
     }
 
-    public static function addSimple(PDO $pdo, string $name) : string
-    {
-        $sql = "INSERT INTO tag (name)
-				VALUES (:name)";
-        return Queries::executeAndReturnWithId($pdo, $sql, ["name"=>name]);
-    }
-
     public static function getNumberOfQuestion(PDO $pdo, int $id) : int
     {
         $sql = "SELECT COUNT(id_question) as count
@@ -40,20 +33,6 @@ class TagQueries
         return Queries::queryOne($pdo, $sql, ['id'=> $id])->get('count');
     }
 
-    public static function deleteTagQuestionRelation(PDO $pdo, string $relationId) : string
-    {
-        $sql = "DELETE FROM rel_question_tag WHERE id = :id";
-
-        return Queries::executeAndReturnWithId($pdo, $sql, ["id" => $relationId]);
-    }
-
-    public static function deleteWithQuestion(PDO $pdo, string $questionId) : string
-    {
-        $sql = "DELETE FROM rel_question_tag
-                WHERE id_question = :id_question";
-        return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId]);
-    }
-
     public static function getByName(PDO $pdo, string $name) : ResultSet
     {
         $sql = "SELECT id
@@ -61,10 +40,17 @@ class TagQueries
         return Queries::queryOne($pdo, $sql, ["name"=>$name]);
     }
 
-    public static function getTagRelationsByTagId(PDO $pdo, string $tagId)
+    public static function addSimple(PDO $pdo, string $name) : string
     {
-        $sql = "SELECT id, id_question 
-                FROM rel_question_tag WHERE id_tag = :tagId";
-        return Queries::queryAll($pdo, $sql, ['tagId'=>$tagId]);
+        $sql = "INSERT INTO tag (name)
+				VALUES (:name)";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["name"=>name]);
+    }
+
+    public static function deleteTag(PDO $pdo, string $tagId): string
+    {
+        $sql = "DELETE FROM tag WHERE id = :id";
+
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id" => $tagId]);
     }
 }
