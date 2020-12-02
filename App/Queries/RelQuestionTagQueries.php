@@ -10,14 +10,16 @@ class RelQuestionTagQueries
 {
 
 
-
-
-    public static function getBy(PDO $pdo, int $id_question) : ResultSet
+    public static function getBy(PDO $pdo, int $id_question) : array
     {
-        $sql = "SELECT *
-				FROM rel_question_tag WHERE id_question = :id";
-        return Queries::queryOne($pdo, $sql, ["id_question"=> $id_question]);
+        $sql = "SELECT tag.name FROM rel_question_tag
+                    join tag
+                    on rel_question_tag.id_tag = tag.id
+                    WHERE id_question = :id_question";
+        return Queries::queryAll($pdo, $sql, ["id_question"=> $id_question]);
     }
+
+
 
     public static function addSimple(PDO $pdo, int $id_question, int $id_tag) : string
     {

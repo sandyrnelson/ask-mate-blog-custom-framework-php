@@ -18,8 +18,12 @@ class AnswerQueries
 
     public static function getAnswersByQuestionID(PDO $pdo, $id_question) : array
     {
-        $sql = "SELECT *
-				FROM answer WHERE id_question = :id_question";
+        $sql = "SELECT answer.id, answer.id_question,
+                    answer.id_registered_user, registered_user.email as answerOwner,
+                    answer.message, answer.vote_number,answer.submission_time
+                FROM answer
+                JOIN registered_user on answer.id_registered_user = registered_user.id
+                WHERE id_question= :id_question";
         return Queries::queryAll($pdo, $sql, ['id_question' => $id_question]);
     }
 
