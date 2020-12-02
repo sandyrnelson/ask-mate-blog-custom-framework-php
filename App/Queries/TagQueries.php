@@ -47,4 +47,11 @@ class TagQueries
 
         Queries::executeAndReturnWithId($pdo, $sql, ['questionId' => $questionId, '$tagId' => $tagId]);
     }
+
+    public static function deleteWithQuestion(PDO $pdo, string $questionId) : string
+    {
+        $sql = "DELETE FROM tag
+                WHERE id_question = :id_question";
+        return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$questionId]);
+    }
 }

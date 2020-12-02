@@ -12,6 +12,7 @@ class AskQuestionController extends BaseController
 
     public function run()
     {
+        session_start();
         $this->view("askQuestionForm", []);
     }
 
@@ -38,6 +39,7 @@ class AskQuestionController extends BaseController
     }
 
     public function addQuestion(){
+        session_start();
         $connection = $this->getConnection();
         $body = $this->getBody();
         if (array_key_exists('imageName', $body)) {

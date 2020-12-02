@@ -25,7 +25,10 @@
     <a href="/list">Questions</a>
     <a href="/tags">Tags</a>
     @if(isset($_SESSION['userName']))
-        <a href="/ask-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
+        @if($_SESSION['userName'] == $questionOwner['email'])
+            <a href="/ask-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
+            <a href="/question/{{ $question['id']}}/delete">Delete Question</a>
+        @endif
     @endif
     <div class="search-container">
         <form action="/search">
@@ -48,19 +51,33 @@
         <tr>
             <td > {{ $question['submission_time'] }} </td>
             <td id="question_message" style="width: 80%">{{ $question['message'] }} </td>
-            <td colspan="2"> {{ $question['vote_number'] }}</td>
+            <td> {{ $question['vote_number'] }}</td>
+            <td>
+                <a href="/question/{{ $question['id']}}/vote/up">
+                    <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Green_Arrow_Top-512.png" width="15" height="15"></a>
+                <br>
+                <a href="/question/{{ $question['id']}}/vote/down">
+                    <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Red_Arrow_Down-512.png" width="15" height="15">
+                </a>
+            </td>
         </tr>
 
 
 
-        @if(isset($_SESSION['userName']))
         <tr>
-            <td><a href="/question/{{ $question['id'] }}/delete"><img
-                            src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
-                            width="15" height="20" alt="Delete question"></a>
+            <td>
+                @if(isset($_SESSION['userName']))
+                    @if($_SESSION['userName'] == $questionOwner['email'])
+
+                <a href="/question/{{ $question['id'] }}/delete"><img
+                                src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
+                                width="15" height="20" alt="Delete question"></a>
+
+                    @endif
+                @endif
             </td>
             <td>
-                @if($tags !== None)
+                @if($tags != null)
                     @foreach($tags as $tag)
                         <div class="tag">{{ $tag['name'] }}
                             <a href="/delete_tag/{{$question['id']}}/{{ $tag['id'] }}">[X]</a>
@@ -68,9 +85,13 @@
                     @endforeach
                 @endif
             </td>
-            <td colspan="2"><a href="/question/{{ $question['id'] }}/new-tag">Add Tag</a></td>
+            <td colspan="2">
+                @if(isset($_SESSION['userName']))
+                    <a href="/question/{{ $question['id'] }}/new-tag">Add Tag</a>
+                @endif
+            </td>
         </tr>
-        @endif
+
 
 
         <tr>
@@ -87,15 +108,15 @@
 
         <tr>
             <th></th>
-            <th><h2>Answers</h2></th>
+            <th><h2>Answers {{ $_SESSION['userName'] }} {{ $questionOwner['email'] }} </h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
-        @foreach($answers as $answer)
+    @foreach($answers as $answer)
         <tr>
             <td>
 
-                @if ($_SESSION['userName'] == $questionOwner['email'])
+                @if (isset($_SESSION['userName']))
                     <a href="/check-answer">
                     @if ($answer['id_question'] == 0)
                         <span style="color:gray;opacity:0.5">&#10003;</span>
@@ -111,6 +132,7 @@
             </td>
 
             <td>{{ $answer['message'] }}</td>
+
             <td style="text-align: center">55</td>
             <td>
                 <a href="/answer/{{$answer['id'] }}/vote_up">
@@ -137,8 +159,8 @@
                 @endif
             </td>
         </tr>
+    @endforeach
 
-        @endforeach
         <tr>
             <td class="bottom-left-corner"></td>
             <td>

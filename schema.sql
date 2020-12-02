@@ -84,7 +84,6 @@ INSERT INTO registered_user VALUES (1, 'test@test.com', '$2y$10$d5WOxRJQJSnjGxd8
 INSERT INTO registered_user VALUES (2, 'user@user.hu', '$2y$10$0cbjFKiblYPkRXBh0BJxjuwSKkgGCVsS3SIc5EovukM3UwALPoS0i', '2020-12-02 10:30:29');
 #psw: user
 INSERT INTO registered_user VALUES (3, 'john@doe.com', '$2y$10$wC8XZrHvq8DPeylJ9DI7fuU.esvqhu5Sb.efVwUUN6qjQ3CpWwVPq', '2020-12-02 10:30:57');
-INSERT INTO image VALUES (1, 'image', 'Flower', '2010-02-16 17:47:54' );
 #psw: john
 INSERT INTO registered_user VALUES (4, 'virag.baranyai2@gmail.com', '$2y$10$xIFif8pL13nRX0/feJwodOwyEHhq.bhxs9uDGusLPbxo7fN0Ys8ve', '2020-12-02 11:29:20');
 

@@ -1,0 +1,5 @@
+ALERT 2020-12-02 12:57:07 Session variable userId could not be checked if set. Session has not been initialized
+ALERT 2020-12-02 13:00:32 Session variable userId could not be checked if set. Session has not been initialized
+ALERT 2020-12-02 13:02:13 Session variable userId could not be checked if set. Session has not been initialized
+ALERT 2020-12-02 13:04:26 Session variable userId could not be checked if set. Session has not been initialized
+ALERT 2020-12-02 13:05:26 Session variable userId could not be checked if set. Session has not been initialized
