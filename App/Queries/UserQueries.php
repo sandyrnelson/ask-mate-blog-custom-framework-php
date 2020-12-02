@@ -5,6 +5,7 @@ namespace App\Queries;
 
 
 use BK_Framework\Database\QueryTools\Queries;
+use BK_Framework\Database\QueryTools\ResultSet;
 use PDO;
 
 class UserQueries
@@ -24,5 +25,13 @@ class UserQueries
         $sql = "INSERT INTO registered_user (email, password_hash)
 				VALUES (:email, :password_hash)";
         return Queries::executeAndReturnWithId($pdo, $sql, ["email"=>$email, "password_hash"=>$hashedPassword]);
+    }
+
+    public static function getUsernameById(PDO $pdo, int $id) : ResultSet
+    {
+        $sql = "SELECT email
+				FROM registered_user
+				WHERE id= :id";
+        return Queries::queryOne($pdo, $sql, ['id' => $id]);
     }
 }
