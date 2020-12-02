@@ -9,6 +9,8 @@
 </head>
 <body>
 
+
+<?php /*My own just examples - Virág*/ ?>
 <?php /*<div>*/ ?>
 <?php /*    <?php $__currentLoopData = array_keys($question); $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $key): $loop = $this->incrementLoopIndices();  ?>*/ ?>
@@ -29,6 +31,8 @@
 <?php /*            <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>*/ ?>
 <?php /*            <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>*/ ?>
 <?php /*</div>*/ ?>
+
+
 
 <?php /*<div class="topnav" id="login_signin">*/ ?>
 <?php /*    {% if not session['username'] %}*/ ?>
