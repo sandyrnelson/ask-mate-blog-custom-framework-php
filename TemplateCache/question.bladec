@@ -25,7 +25,10 @@
  <a href="/list">Questions</a>
  <a href="/tags">Tags</a>
  <?php if(isset($_SESSION['userName'])): ?>
+ <?php if($_SESSION['userName'] == $questionOwner['email']): ?>
  <a href="/ask-question">New Question</a><a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/edit">Edit the Question</a>
+ <a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/delete">Delete Question</a>
+ <?php endif; ?>
  <?php endif; ?>
  <div class="search-container">
  <form action="/search">
@@ -48,30 +51,49 @@
  <tr>
  <td > <?php echo \htmlentities($question['submission_time'], ENT_QUOTES, 'UTF-8', false); ?> </td>
  <td id="question_message" style="width: 80%"><?php echo \htmlentities($question['message'], ENT_QUOTES, 'UTF-8', false); ?> </td>
- <td colspan="2"> <?php echo \htmlentities($question['vote_number'], ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td> <?php echo \htmlentities($question['vote_number'], ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/vote/up">
+ <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Green_Arrow_Top-512.png" width="15" height="15"></a>
+ <br>
+ <a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/vote/down">
+ <img src="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Red_Arrow_Down-512.png" width="15" height="15">
+ </a>
+ </td>
  </tr>
 
 
 
- <?php if(isset($_SESSION['userName'])): ?>
  <tr>
- <td><a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/delete"><img
+ <td>
+ <?php if(isset($_SESSION['userName'])): ?>
+ <?php if($_SESSION['userName'] == $questionOwner['email']): ?>
+
+ <a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/delete"><img
  src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
  width="15" height="20" alt="Delete question"></a>
+
+ <?php endif; ?>
+ <?php endif; ?>
  </td>
  <td>
-<?php /*                <?php if($tags !== 'null'): ?>*/ ?>
-<?php /*                    <?php $__currentLoopData = $tags; $this->addLoop($__currentLoopData);$this->getFirstLoop();
- foreach($__currentLoopData as $tag): $loop = $this->incrementLoopIndices();  ?>*/ ?>
-<?php /*                        <div class="tag"><?php echo \htmlentities($tag['name'], ENT_QUOTES, 'UTF-8', false); ?>*/ ?>
-<?php /*                            <a href="<?php echo \htmlentities('delete_tag' .'/'. $tag['id'], ENT_QUOTES, 'UTF-8', false); ?>">x</a>*/ ?>
-<?php /*                        </div>*/ ?>
-<?php /*                    <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>*/ ?>
-<?php /*                <?php endif; ?>*/ ?>
- </td>
- <td colspan="2"><a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/new-tag">Add Tag</a></td>
- </tr>
+ <?php if($tags != null): ?>
+ <?php $__currentLoopData = $tags; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $tag): $loop = $this->incrementLoopIndices();  ?>
+ <div class="tag"><?php echo \htmlentities($tag['name'], ENT_QUOTES, 'UTF-8', false); ?>
+
+ <a href="<?php echo \htmlentities('delete_tag' .'/'. $tag['id'], ENT_QUOTES, 'UTF-8', false); ?>">x</a>
+ </div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  <?php endif; ?>
+ </td>
+ <td colspan="2">
+ <?php if(isset($_SESSION['userName'])): ?>
+ <a href="/question/<?php echo \htmlentities($question['id'], ENT_QUOTES, 'UTF-8', false); ?>/new-tag">Add Tag</a>
+ <?php endif; ?>
+ </td>
+ </tr>
+
 
 
  <tr>
@@ -88,7 +110,7 @@
 
  <tr>
  <th></th>
- <th><h2>Answers</h2></th>
+ <th><h2>Answers <?php echo \htmlentities($_SESSION['userName'], ENT_QUOTES, 'UTF-8', false); ?> <?php echo \htmlentities($questionOwner['email'], ENT_QUOTES, 'UTF-8', false); ?> </h2></th>
  <th colspan="2"><strong>Votes</strong></th>
  </tr>
 
@@ -97,7 +119,7 @@
  <tr>
  <td>
 
- <?php if($_SESSION['userName'] == $questionOwner['email']): ?>
+ <?php if(isset($_SESSION['userName'])): ?>
  <a href="/check-answer">
  <?php if($answer['id_question'] == 0): ?>
  <span style="color:gray;opacity:0.5">&#10003;</span>
@@ -113,6 +135,7 @@
  </td>
 
  <td><?php echo \htmlentities($answer['message'], ENT_QUOTES, 'UTF-8', false); ?></td>
+
  <td style="text-align: center">55</td>
  <td>
  <a href="/answer/<?php echo \htmlentities($answer['id'], ENT_QUOTES, 'UTF-8', false); ?>/vote_up">
@@ -139,8 +162,8 @@
  <?php endif; ?>
  </td>
  </tr>
-
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+
  <tr>
  <td class="bottom-left-corner"></td>
  <td>
