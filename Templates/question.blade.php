@@ -9,28 +9,6 @@
 </head>
 <body>
 
-
-{{--My own just examples - Virág--}}
-{{--<div>--}}
-{{--    @foreach(array_keys($question) as $key)--}}
-{{--        <br>--}}
-{{--            @if ($key == 'message')--}}
-{{--                <p> {{ $question[$key] }}</p>--}}
-{{--            @endif--}}
-{{--    @endforeach--}}
-
-{{--    @foreach($answers as $answer)--}}
-{{--            @foreach(array_keys($answer) as $key)--}}
-{{--                <br>--}}
-{{--                @if ($key == 'message')--}}
-{{--                    <p> {{ $answer[$key] }}</p>--}}
-{{--                @endif--}}
-{{--            @endforeach--}}
-{{--            @endforeach--}}
-{{--</div>--}}
-
-
-
 <div class="topnav" id="login_signin">
     @if(!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
@@ -47,7 +25,7 @@
     <a href="/list">Questions</a>
     <a href="/tags">Tags</a>
     @if(isset($_SESSION['userName']))
-        <a href="/add-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
+        <a href="/ask-question">New Question</a><a href="/question/{{ $question['id']}}/edit">Edit the Question</a>
     @endif
     <div class="search-container">
         <form action="/search">

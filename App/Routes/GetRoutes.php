@@ -19,6 +19,8 @@ class GetRoutes
         }, "GET");
 
 
+
+
 		Router::add("/get/([0-9]*)", function ($param) {
 			echo "Got number $param";
 		}, "GET");

@@ -104,10 +104,21 @@ INSERT INTO question VALUES (4, 2, 4, 'Kikelet', 'Pitypang and Emil are real roc
 INSERT INTO tag VALUES (1, 'python');
 INSERT INTO tag VALUES (2, 'sql');
 INSERT INTO tag VALUES (3, 'css');
+INSERT INTO tag VALUES (4, 'mariadb');
+INSERT INTO tag VALUES (5, 'java');
+INSERT INTO tag VALUES (6, 'python');
+INSERT INTO tag VALUES (7, 'trambulin');
 
 INSERT INTO rel_question_tag VALUES (1, 1);
 INSERT INTO rel_question_tag VALUES (4, 2);
+INSERT INTO rel_question_tag VALUES (4, 3);
+INSERT INTO rel_question_tag VALUES (4, 4);
+INSERT INTO rel_question_tag VALUES (2, 3);
 INSERT INTO rel_question_tag VALUES (3, 3);
+INSERT INTO rel_question_tag VALUES (3, 6);
+INSERT INTO rel_question_tag VALUES (2, 5);
+INSERT INTO rel_question_tag VALUES (1, 2);
+INSERT INTO rel_question_tag VALUES (4, 7);
 
 INSERT INTO answer VALUES (1, 1, 1, 'This is an answer.', 34, '2019-11-21 20:01:05');
 INSERT INTO answer VALUES (2, 3, 2, 'Another answer.', 18, '2017-08-10 18:01:05');
