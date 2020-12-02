@@ -24,10 +24,8 @@ class AskQuestionRoutes
             $controller = new AskQuestionController();
             $questionId = $controller->addQuestion();
 //            header("Location: " . '/');
-//            $test = $_GET['/question/' . $questionId];
-//            header('Location: '.$test);
-            $controller = new QuestionController($questionId);
-            $controller -> run();
+
+            header("Location: /question/".$questionId );
             exit();
 
         }, "POST");
