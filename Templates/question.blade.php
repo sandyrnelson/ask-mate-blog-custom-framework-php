@@ -55,11 +55,17 @@
 
 
 
-        @if(isset($_SESSION['userName']))
         <tr>
-            <td><a href="/question/{{ $question['id'] }}/delete"><img
-                            src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
-                            width="15" height="20" alt="Delete question"></a>
+            <td>
+                @if(isset($_SESSION['userName']))
+                    @if($_SESSION['userName'] == $questionOwner['email'])
+
+                <a href="/question/{{ $question['id'] }}/delete"><img
+                                src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
+                                width="15" height="20" alt="Delete question"></a>
+
+                    @endif
+                @endif
             </td>
             <td>
                 @if($tags != null)
@@ -70,9 +76,13 @@
                     @endforeach
                 @endif
             </td>
-            <td colspan="2"><a href="/question/{{ $question['id'] }}/new-tag">Add Tag</a></td>
+            <td colspan="2">
+                @if(isset($_SESSION['userName']))
+                    <a href="/question/{{ $question['id'] }}/new-tag">Add Tag</a>
+                @endif
+            </td>
         </tr>
-        @endif
+
 
 
         <tr>
@@ -93,11 +103,11 @@
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
-        @foreach($answers as $answer)
+    @foreach($answers as $answer)
         <tr>
             <td>
 
-                @if ($_SESSION['userName'] == $questionOwner['email'])
+                @if (isset($_SESSION['userName']))
                     <a href="/check-answer">
                     @if ($answer['id_question'] == 0)
                         <span style="color:gray;opacity:0.5">&#10003;</span>
@@ -113,6 +123,7 @@
             </td>
 
             <td>{{ $answer['message'] }}</td>
+
             <td style="text-align: center">55</td>
             <td>
                 <a href="/answer/{{$answer['id'] }}/vote_up">
@@ -139,8 +150,8 @@
                 @endif
             </td>
         </tr>
+    @endforeach
 
-        @endforeach
         <tr>
             <td class="bottom-left-corner"></td>
             <td>
