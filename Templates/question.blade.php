@@ -143,7 +143,7 @@
         <tr>
             <td>
                 @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
-                    <a href="/answer/{{ $answer['id']}}/delete">
+                    <a href="/question/{{ $question['id'] }}/delete-answer/{{ $answer['id']}}">
                         <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
                             width="15" height="20" alt="Delete question"></a>
                 @endif
