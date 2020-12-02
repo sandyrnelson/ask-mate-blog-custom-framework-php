@@ -7,9 +7,9 @@ namespace App\Routes;
 class RouteManager
 {
 
-	public static function init()
-	{
-//		BandRoutes::init();
+	public static function init(): void
+    {
+
 		GetRoutes::init();
 		OtherRoutes::init();
         UserRelatedRoutes::init();

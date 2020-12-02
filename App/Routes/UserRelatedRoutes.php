@@ -13,7 +13,7 @@ use BK_Framework\Router\Router;
 
 class UserRelatedRoutes
 {
-    public static function init()
+    public static function init(): void
     {
         Router::add("/registration", function () {
             $controller = new RegistrationController();

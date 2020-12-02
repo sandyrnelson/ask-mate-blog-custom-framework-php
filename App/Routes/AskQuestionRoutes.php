@@ -5,8 +5,6 @@ namespace App\Routes;
 
 
 use App\Controller\AskQuestionController;
-use App\Controller\MainPageController;
-use App\Queries\QuestionQueries;
 use BK_Framework\Router\Router;
 
 class AskQuestionRoutes

@@ -5,9 +5,7 @@ namespace App\Routes;
 
 
 use App\Controller\MainPageController;
-use App\Controller\QuestionController;
 use App\Controller\TagPageController;
-use App\Controller\SessionController;
 use App\Controller\TagDeleteController;
 use App\Controller\UsersController;
 use BK_Framework\Router\Router;
@@ -37,8 +35,6 @@ class OtherRoutes
 			$controller = new UsersController();
 			$controller->run();
 		}, "GET");
-
-
 
 	}
 

@@ -6,10 +6,8 @@ namespace App\Routes;
 
 use App\Controller\AddAnswerController;
 use App\Controller\AnswerVoteController;
-use App\Controller\AskQuestionController;
 use App\Controller\DeleteAnswerController;
 use App\Controller\EditAnswerController;
-use App\Controller\EditQuestionController;
 use BK_Framework\Router\Router;
 
 class AnswerRoutes
