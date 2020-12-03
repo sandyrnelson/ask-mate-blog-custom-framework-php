@@ -30,7 +30,7 @@
                 <label for="password">Password:</label><br>
             </div>
             <div class="col-75">
-                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
             </div>
         </div>
         <div class="row">
