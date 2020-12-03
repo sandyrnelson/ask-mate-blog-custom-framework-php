@@ -55,6 +55,7 @@ class QuestionController extends BaseController
         $time = strtotime($questionDetails['submission_time'] );
         $myFormatForView = date("m/d/y", $time);
         $questionDetails['submission_time'] = $myFormatForView;
+        $loggedUser = $this->getLoggedUserId() ? UserQueries::getUserIDBySessionName($connection, $_SESSION['userName']) -> getRecord() : 0;
 
         $questionOwner = UserQueries::getById($connection, $questionDetails['id_registered_user'])->getRecord();
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
@@ -66,10 +67,10 @@ class QuestionController extends BaseController
             $imageId = $questionDetails['id_image'];
             $imageName = ImageQueries::getBy($connection, $imageId)->get('file_name');
             $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
-                'questionOwner' => $questionOwner, 'imageName'=>$imageName]);
+                'questionOwner' => $questionOwner, 'imageName'=>$imageName, 'loggedUser' => $loggedUser]);
         } else {
             $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
-                'questionOwner' => $questionOwner]);
+                'questionOwner' => $questionOwner, 'loggedUser' => $loggedUser]);
         }
     }
 
