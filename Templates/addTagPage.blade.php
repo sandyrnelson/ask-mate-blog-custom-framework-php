@@ -35,9 +35,8 @@
     <form action="/question/{{ $questionId }}/new-tag" method="post">
         <label for="tag_name">Choose tag:</label>
         <select name="tag_name">
-            <option value="None"></option>
             @foreach($tags as $tag)
-                <option value="{{ $tag->get('name') }}" @if ($tag->get('name') === $tags[0]) selected @else @endif>{{ $tag->get('name') }}</option>
+                <option value="{{ $tag->get('name') }}" @if ($tag->get('name') === $tags[0]->get('name')) selected @else @endif>{{ $tag->get('name') }}</option>
             @endforeach
         </select>
         <button type="submit">Add Tag</button>
