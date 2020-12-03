@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Queries\AnswerQueries;
+use App\Queries\ImageQueries;
 use App\Queries\QuestionQueries;
 use App\Queries\RelQuestionTagQueries;
 use App\Queries\TagQueries;
@@ -54,7 +55,7 @@ class QuestionController extends BaseController
         $time = strtotime($questionDetails['submission_time'] );
         $myFormatForView = date("m/d/y", $time);
         $questionDetails['submission_time'] = $myFormatForView;
-        $userName = UserQueries::getUsernameById($connection, $questionDetails['id_registered_user'])->getRecord();
+
         $questionOwner = UserQueries::getById($connection, $questionDetails['id_registered_user'])->getRecord();
 
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
@@ -65,7 +66,7 @@ class QuestionController extends BaseController
         $imageId = $questionDetails['id_image'];
         $imageName = ImageQueries::getBy($connection, $imageId)->get('file_name');
         $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
-            'questionOwner' => $userName, 'imageName'=>$imageName]);
+            'questionOwner' => $questionOwner, 'imageName'=>$imageName, 'loggedUser' => $loggedUser]);
     }
 
 

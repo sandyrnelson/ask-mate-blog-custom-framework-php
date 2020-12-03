@@ -39,36 +39,31 @@
             <th>User id</th>
             <th>User Email</th>
             <th>Registration date</th>
-{{--            <th>Questions Asked</th>--}}
-{{--            <th>Answers Given</th>--}}
-{{--            <th>Comments Provided</th>--}}
-{{--            <th>Reputation</th>--}}
         </tr>
         <tr>
             <td>{{ $user['id'] }}</td>
             <td>{{  $user['email'] }}</td>
             <td>{{  $user['registration_time'] }}</td>
-{{--            <td>{{ user_info.question_count }}</td>--}}
-{{--            <td>{{ user_info.answer_count }}</td>--}}
-{{--            <td>{{ user_info.comment_count }}</td>--}}
-{{--            <td>{{ user_info.reputation }}</td>--}}
+
         </tr>
     </table>
+
     <h2>Questions</h2>
     <div class="center">
         <table class="tbl">
             <tr>
                 <th>Question</th>
-                <th>Vote Count</th>
+                <th style="text-align: center">Vote Count</th>
             </tr>
             @foreach($questions as $question)
             <tr>
                 <td><a href="../question/{{$question['id']}}"> {{ $question['title'] }}</a></td>
-                <td class="center">{{ $question['vote_number'] }}</td>
+                <td class="center" >{{ $question['vote_number'] }}</td>
             </tr>
             @endforeach
         </table>
     </div>
+
     <h2>Answers</h2>
     <table class="tbl">
         <tr>
@@ -78,11 +73,10 @@
         </tr>
         @foreach($answers as $answer)
         <tr>
-            <td><a href="../question/{{$question['id']}}"> {{ $answer['message'] }}</a></td>
+            <td><a href="../question/{{$question['id']}}"> {{ $answer['answer'] }}</a></td>
             <td class="center">{{ $answer['vote_number'] }}</td>
             <td class="center">
                 <span style="color:green">&#10003;</span>
-
             </td>
         </tr>
         @endforeach

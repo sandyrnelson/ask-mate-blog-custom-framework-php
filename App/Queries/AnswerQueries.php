@@ -37,7 +37,7 @@ class AnswerQueries
     public static function getAnswersByUserID(PDO $pdo, $userId) : array
     {
         $sql = "SELECT answer.id, q.title as title, q.message as question,
-                    answer.message as answer, answer.vote_number,answer.submission_time
+                    answer.message as answer, answer.vote_number, answer.submission_time
                 FROM answer
                 JOIN registered_user ru on ru.id = answer.id_registered_user
                 JOIN question q on q.id = answer.id_question
