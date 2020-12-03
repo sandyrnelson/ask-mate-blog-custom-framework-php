@@ -95,8 +95,8 @@
             <td> </td>
 
             <td style="text-align:center">
-                @if($question["id_image"] != '')
-                    <img class="small" src="/Static/image/{{ $question['id_image'] }}.jpg"  width="350px" alt="question_image">
+                @if($imageName)
+                    <img class="small" src="/Static/image/{{ $imageName }}"  width="350px" alt="question_image">
                 @endif
             </td>
             <td colspan="2"></td>
