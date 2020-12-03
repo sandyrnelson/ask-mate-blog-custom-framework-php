@@ -70,6 +70,16 @@ th {
   color: white;
 }
 
+#question_message{
+    text-align: center;
+    padding: 5%;
+}
+
+.answer-message {
+    width : 100%;
+    text-align: left;
+}
+
 .views {
     border-top-left-radius: 25%;
 }
@@ -144,7 +154,7 @@ th {
 
 .topnav .search-container button {
     float: right;
-    padding: 7.5px 10px;
+    padding: 6px 10px;
     margin-top: 8px;
     margin-right: 16px;
     background: #ddd;
@@ -179,4 +189,15 @@ th {
     justify-content: flex-end;
     align-content: flex-end;
     width: 100%;
+}
+
+.tbl {
+    font-size: 18px;
+}
+
+.tag-deletion a:hover {
+    font-size: 15px;
+    padding: 4px;
+    color: #ffb724;
+    /*color: #f20003;*/
 }

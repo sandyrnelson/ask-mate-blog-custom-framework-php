@@ -80,7 +80,9 @@
                 @if($tags != null)
                     @foreach($tags as $tag)
                         <div class="tag">{{ $tag['name'] }}
-                            <a href="/delete_tag/{{$question['id']}}/{{ $tag['name'] }}">[X]</a>
+                           <span class="tag-deletion">
+                               <a href="/delete_tag/{{$question['id']}}/{{ $tag['name'] }}">[X]</a>
+                           </span>
                         </div>
                     @endforeach
                 @endif
@@ -126,7 +128,7 @@
                     @endif
                 @endif
             </td>
-            <td style="width:100%;">{{ $answer['message'] }}</td>
+            <td class="answer-message">{{ $answer['message'] }}</td>
             <td>
                 @if ($_SESSION['userName'] == $answer['answerOwner'])
                     <a href="/question/{{$question['id']}}/edit-answer/{{ $answer['id']}}"/>Edit</a>

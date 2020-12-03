@@ -47,6 +47,9 @@ class QuestionController extends BaseController
         $connection = $this->getConnection();
         $questionDetails = QuestionQueries::getBy($connection, $this ->getQuestionID()) -> getRecord();
 
+        $time = strtotime($questionDetails['submission_time'] );
+        $myFormatForView = date("m/d/y", $time);
+        $questionDetails['submission_time'] = $myFormatForView;
         $userName = UserQueries::getUsernameById($connection, $questionDetails['id_registered_user'])->getRecord();
 
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());

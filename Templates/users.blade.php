@@ -34,11 +34,11 @@
     <h1>Registered Users</h1>
     <table class="tbl">
         <tr>
-            <th class="views">User ID</th>
+            <th class="top-left-corner">User ID</th>
             <th >User Email</th>
-            <th >Registration date</th>
-            <th >Count of asked questions</th>
-            <th >Count of answers</th>
+            <th >Registration Date</th>
+            <th >Questions Asked</th>
+            <th class="top-right-corner">Answers</th>
         </tr>
         <tbody>
         @foreach ($users as $user)

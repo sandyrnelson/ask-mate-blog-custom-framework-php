@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="main">
-            <h1>Ask Mate Main Page</h1>
+            <h1>Welcome to Cooking Tips</h1>
             <table class="tbl">
                 <tr>
                     <th class="views">Title</th>
