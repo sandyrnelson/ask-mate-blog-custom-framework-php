@@ -44,7 +44,7 @@ class TagQueries
     {
         $sql = "INSERT INTO tag (name)
 				VALUES (:name)";
-        return Queries::executeAndReturnWithId($pdo, $sql, ["name"=>name]);
+        return Queries::executeAndReturnWithId($pdo, $sql, ["name"=>$name]);
     }
 
     public static function deleteTag(PDO $pdo, string $tagId): string
