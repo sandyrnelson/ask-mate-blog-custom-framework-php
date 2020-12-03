@@ -20,7 +20,6 @@
 </div>
 <div class="topnav">
     <a class="active" href="/">Home</a>
-{{--    <a href="/list">Questions</a>--}}
     <a href="/add-question">New Question</a>
     <div class="search-container">
         <form action="/search" method="post">
