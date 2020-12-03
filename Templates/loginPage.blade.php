@@ -43,7 +43,7 @@
             <div class="row">
                 <input type=submit value=Login>
             </div>
-            <p> {{ $errorMessage or '' }}</p>
+            <p style="font-weight: bold"> {{ $errorMessage or '' }}</p>
         </form>
     </div>
 </body>
