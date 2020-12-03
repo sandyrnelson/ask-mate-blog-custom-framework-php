@@ -65,7 +65,9 @@ class AnswerVoteController extends BaseController
         $connection = $this->getConnection();
         $answerDetails = AnswerQueries::getBy($connection, $answerId) -> getRecord();
         $answerVoteCount = (int)($answerDetails ['vote_number']) + $this->getVoteCountChange();
-        return AnswerQueries::updateVote($connection, $answerId, $answerVoteCount);
-
+        if ($answerVoteCount >= 0) {
+            return AnswerQueries::updateVote($connection, $answerId, $answerVoteCount);
+        }
+        return $answerId;
     }
 }
