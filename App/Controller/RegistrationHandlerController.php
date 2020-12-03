@@ -21,15 +21,18 @@ class RegistrationHandlerController extends BaseController
     public function run()
     {
         $connection = $this->getConnection();
-        $newUser = ["email"=>Post::get("email"), "password"=>Post::get("password")];
-
+        $newUser = ["email"=>Post::get("email"), "password"=>Post::get("password"), "confirm"=>Post::get('confirm')];
         if ($this->registrationValidation($connection, $newUser)) {
-            $hashedPassword = password_hash($newUser['password'], PASSWORD_DEFAULT);
-            UserQueries::addUser($connection, $newUser['email'], $hashedPassword);
-            header("Location: " . '/login');
-        } else {
-            $this->view("registrationPage", ["errorMessage"=>$this->errorMessage]);
+            if ($newUser['email'] !== $newUser['confirm']) {
+                $this->errorMessage = "Password and Confirmation doesn't match";
+            } else {
+                $hashedPassword = password_hash($newUser['password'], PASSWORD_DEFAULT);
+                UserQueries::addUser($connection, $newUser['email'], $hashedPassword);
+                header("Location: " . '/login');
+            }
         }
+
+        $this->view("registrationPage", ["errorMessage"=>$this->errorMessage]);
 
     }
 

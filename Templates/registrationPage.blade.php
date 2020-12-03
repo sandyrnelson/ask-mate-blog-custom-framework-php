@@ -34,6 +34,14 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-25">
+                <label for="confirm">Confirmation:</label><br>
+            </div>
+            <div class="col-75">
+                <input type="password" id="password" name="confirm" required placeholder="Confirm your password">
+            </div>
+        </div>
+        <div class="row">
             <input type="submit" value="SUBMIT">
         </div>
     </form>
