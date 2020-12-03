@@ -23,7 +23,7 @@ class RegistrationHandlerController extends BaseController
         $connection = $this->getConnection();
         $newUser = ["email"=>Post::get("email"), "password"=>Post::get("password"), "confirm"=>Post::get('confirm')];
         if ($this->registrationValidation($connection, $newUser)) {
-            if ($newUser['email'] !== $newUser['confirm']) {
+            if ($newUser['password'] !== $newUser['confirm']) {
                 $this->errorMessage = "Password and Confirmation doesn't match";
             } else {
                 $hashedPassword = password_hash($newUser['password'], PASSWORD_DEFAULT);
