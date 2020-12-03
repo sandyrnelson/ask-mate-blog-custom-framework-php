@@ -31,7 +31,7 @@ class RelQuestionTagQueries
     public static function addSimple(PDO $pdo, int $id_question, int $id_tag) : string
     {
         $sql = "INSERT INTO rel_question_tag (id_question, id_tag)
-				VALUES (:name)";
+				VALUES (:id_question, :id_tag)";
         return Queries::executeAndReturnWithId($pdo, $sql, ["id_question"=>$id_question, "id_tag"=> $id_tag]);
     }
 
