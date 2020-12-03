@@ -8,6 +8,7 @@ use App\Controller\MainPageController;
 use App\Controller\TagAddController;
 use App\Controller\TagPageController;
 use App\Controller\TagDeleteController;
+use App\Controller\UserPageController;
 use App\Controller\UsersController;
 use BK_Framework\Router\Router;
 
@@ -46,6 +47,11 @@ class OtherRoutes
 			$controller = new UsersController();
 			$controller->run();
 		}, "GET");
+
+        Router::add("/userPage/([0-9]*)", function ($param) {
+            $controller = new UserPageController($param);
+            $controller->run();
+        }, "GET");
 
 	}
 

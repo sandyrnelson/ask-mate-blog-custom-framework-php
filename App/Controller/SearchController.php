@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Queries\AnswerQueries;
 use App\Queries\QuestionQueries;
+use App\Queries\UserQueries;
 use BK_Framework\SuperGlobal\Post;
 
 /**
@@ -43,6 +44,9 @@ class SearchController extends BaseController
         session_start();
         $this->searchText = Post::get("search");
         $connection = $this->getConnection();
+
+        $loggedUser = $this->getLoggedUserId() ? UserQueries::getUserIDBySessionName($connection, $_SESSION['userName']) -> getRecord() : 0;
+
         $questionsFromDB = QuestionQueries::search($connection, $this->getSearchText() );
         $questions = array();
         foreach ($questionsFromDB as $question) {
@@ -59,7 +63,7 @@ class SearchController extends BaseController
             array_push($questions, $record);
         }
 //        var_dump($questions);
-		$this->view('search', ['questions'=>$questions]);
+		$this->view('search', ['questions'=>$questions, 'loggedUser' => $loggedUser]);
 	}
 
     /**

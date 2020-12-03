@@ -29,12 +29,20 @@ class UserQueries
         return Queries::queryAll($pdo, $sql);
     }
 
-    public static function getUsernameById(PDO $pdo, int $id) : ResultSet
+    public static function getById(PDO $pdo, int $id) : ResultSet
     {
-        $sql = "SELECT email
+        $sql = "SELECT *
 				FROM registered_user
 				WHERE id= :id";
         return Queries::queryOne($pdo, $sql, ['id' => $id]);
+    }
+
+    public static function getUserIDBySessionName(PDO $pdo, string $name) : ResultSet
+    {
+        $sql = "SELECT id
+				FROM registered_user
+				WHERE email= :email";
+        return Queries::queryOne($pdo, $sql, ['email' => $name]);
     }
 
     public static function addUser(PDO $pdo, string $email, string $hashedPassword) : string

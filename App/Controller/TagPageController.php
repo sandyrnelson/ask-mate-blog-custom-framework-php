@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Queries\TagQueries;
+use App\Queries\UserQueries;
 
 /**
  * Class TagController
@@ -18,10 +19,15 @@ class TagPageController extends BaseController
      */
     public function run()
     {
+        session_start();
+
         $connection = $this->getConnection();
+
+        $loggedUser = $this->getLoggedUserId() ? UserQueries::getUserIDBySessionName($connection, $_SESSION['userName']) -> getRecord() : 0;
+
         $tags = TagQueries::getAll($connection);
         $this->addQuestionCountToTags($tags);
-        $this->view("tagPage", ['tags' => $tags]);
+        $this->view("tagPage", ['tags' => $tags, 'loggedUser' => $loggedUser]);
 
     }
 

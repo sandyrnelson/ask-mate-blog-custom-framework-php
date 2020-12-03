@@ -43,18 +43,22 @@ class QuestionController extends BaseController
      *
      */
     public function run() {
+
         session_start();
         $connection = $this->getConnection();
+
+        $loggedUser = $this->getLoggedUserId() ? UserQueries::getUserIDBySessionName($connection, $_SESSION['userName']) -> getRecord() : 0;
+
         $questionDetails = QuestionQueries::getBy($connection, $this ->getQuestionID()) -> getRecord();
 
-        $userName = UserQueries::getUsernameById($connection, $questionDetails['id_registered_user'])->getRecord();
+        $questionOwner = UserQueries::getById($connection, $questionDetails['id_registered_user'])->getRecord();
 
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
         $answers = $this -> getArraysOfRecords($answersByQuestionID);
         $tagsRecords = RelQuestionTagQueries::getBy($connection, $questionDetails['id']);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 
-        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags, 'questionOwner' => $userName]);
+        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags, 'questionOwner' => $questionOwner, 'loggedUser' => $loggedUser]);
     }
 
 
