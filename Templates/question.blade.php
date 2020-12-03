@@ -11,7 +11,7 @@
 <div class="topnav" id="login_signin">
     @if(!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
-        <a href="/registration">Sign in</a>
+        <a href="/registration">Registration</a>
     @else
         <a href="/user/{{ $question['id_registered_user']}}"> Your User Page</a>
         <a class="active" href="/logout">Logout</a>

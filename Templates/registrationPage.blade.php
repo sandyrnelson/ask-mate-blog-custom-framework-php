@@ -11,7 +11,7 @@
     <a class="active" href="/">Home</a>
     <div class="topnav" id="login_signin">
         <a class="active" href="/login">Login</a>
-        <a href="/registration">Sign in</a>
+        <a href="/registration">Registration</a>
     </div>
 </div>
 <div class="container">
