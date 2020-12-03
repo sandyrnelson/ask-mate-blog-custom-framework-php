@@ -39,7 +39,7 @@ class RegistrationHandlerController extends BaseController
      * @return bool
      */
     private function registrationValidation($connection, $newUser) : bool {
-        if (!preg_match("/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}$/", $newUser['name'])) {
+        if (!preg_match("/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}$/", $newUser['email'])) {
             $this->errorMessage = "Invalid username";
             return false;
         }
