@@ -57,8 +57,10 @@ class AskQuestionController extends BaseController
         $connection = $this->getConnection();
 
         $body = $this->getQuestionData($connection);
+        if (array_key_exists('imageId', $body)) {
+            return QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'], $body['imageId']);
+        }
         return QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'] );
-
     }
 
     /**
@@ -73,9 +75,6 @@ class AskQuestionController extends BaseController
         if (0 < count($imageData)) {
             $imageId = QuestionQueries::saveImageData($connection, $imageData['directory'], $imageData['fileName']);
             $body['imageId'] = $imageId;
-        }
-        if (array_key_exists('imageName', $body)) {
-            QuestionQueries::addQuestion($connection, $body['userId'], $body['title'], $body['message'], $body['imageId']);
         }
         return $body;
     }

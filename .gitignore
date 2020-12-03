@@ -32,4 +32,5 @@ analyze.txt
 .htaccess
 App/Config
 composer.lock
+TemplateCache
 

@@ -12,7 +12,7 @@
 <div class="topnav" id="login_signin">
     @if(!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
-        <a href="/registration">Sign in</a>
+        <a href="/registration">Registration</a>
     @else
         <a href="/user/{{ $question['id_registered_user']}}"> Your User Page</a>
         <a class="active" href="/logout">Logout</a>
@@ -97,9 +97,9 @@
         <tr>
             <td> </td>
 
-            <td colspan="3"style="text-align:center">
-                @if($question["id_image"] != '')
-                    <img class="small" src="/Static/image/{{ $question['id_image'] }}.jpg"  width="350px" alt="question_image">
+            <td colspan="3" style="text-align:center">
+                @if($imageName)
+                    <img class="small" src="/Static/image/{{ $imageName }}"  width="350px" alt="question_image">
                 @endif
             </td>
             <td colspan="2"></td>

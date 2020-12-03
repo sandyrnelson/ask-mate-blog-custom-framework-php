@@ -4,6 +4,9 @@
 namespace BK_Framework\SuperGlobal;
 
 
+use BK_Framework\Logger\Logger;
+use RuntimeException;
+
 /**
  * Class Files
  * @package BK_Framework\SuperGlobal
@@ -17,12 +20,17 @@ class Files
      */
     public static function saveImage($destination=null) : array {
         [$fileName, $fileSize, $fileType, $tmp_name] = self::getFileData();
-        $directory = $destination ?? __DIR__ . "/../../Static/";
+        $destination = $destination ?? "/../../Static/image/";
+        $directory = __DIR__ . $destination;
         $possibleTypes = ['gif','jpg','jpe','jpeg','png', 'image/jpeg'];
+
+        if (!mkdir($directory) && !is_dir($directory)) {
+            echo "wrong dir";
+        }
 
         if (in_array($fileType, $possibleTypes, true)) {
             move_uploaded_file($tmp_name, $directory.$fileName);
-            return ['directory'=>$directory, 'fileName'=>$fileName];
+            return ['directory'=>$destination, 'fileName'=>$fileName];
         }
         return array();
     }
