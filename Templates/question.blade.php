@@ -44,13 +44,13 @@
     <table class="tbl">
         <tr>
             <th class="views"></th>
-            <th><h2>{{ $question['title'] }}</h2></th>
+            <th colspan="3"><h2>{{ $question['title'] }}</h2></th>
             <th colspan="2" class="votes"><h3>Votes</h3></th>
         </tr>
 
         <tr>
             <td > {{ $question['submission_time'] }} </td>
-            <td id="question_message" style="width: 80%">{{ $question['message'] }} </td>
+            <td colspan="3" id="question_message" style="width: 80%">{{ $question['message'] }} </td>
             <td> {{ $question['vote_number'] }}</td>
             <td>
                 <a href="/question/{{ $question['id']}}/vote/up">
@@ -76,7 +76,7 @@
                     @endif
                 @endif
             </td>
-            <td>
+            <td colspan="3">
                 @if($tags != null)
                     @foreach($tags as $tag)
                         <div class="tag">{{ $tag['name'] }}
@@ -97,7 +97,7 @@
         <tr>
             <td> </td>
 
-            <td style="text-align:center">
+            <td colspan="3"style="text-align:center">
                 @if($question["id_image"] != '')
                     <img class="small" src="/Static/image/{{ $question['id_image'] }}.jpg"  width="350px" alt="question_image">
                 @endif
@@ -107,8 +107,8 @@
 
 
         <tr>
-            <th></th>
-            <th><h2>Answers</h2></th>
+            <th ></th>
+            <th colspan="3"><h2>Answers</h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
@@ -126,9 +126,19 @@
                     @endif
                 @endif
             </td>
-
-            <td>{{ $answer['message'] }}</td>
-
+            <td style="width:100%;">{{ $answer['message'] }}</td>
+            <td>
+                @if ($_SESSION['userName'] == $answer['answerOwner'])
+                    <a href="/question/{{$question['id']}}/edit-answer/{{ $answer['id']}}"/>Edit</a>
+                @endif
+            </td>
+            <td>
+                @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
+                    <a href="/question/{{ $question['id'] }}/delete-answer/{{ $answer['id']}}">
+                        <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
+                             width="15" height="20" alt="Delete question"></a>
+                @endif
+            </td>
             <td style="text-align: center">{{ $answer['vote_number'] }}</td>
             <td>
                 <a href="/question/{{ $question['id'] }}/vote-answer/{{ $answer['id']}}/up">
@@ -141,25 +151,12 @@
                 </a>
             </td>
         </tr>
-        <tr>
-            <td>
-                @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
-                    <a href="/question/{{ $question['id'] }}/delete-answer/{{ $answer['id']}}">
-                        <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
-                            width="15" height="20" alt="Delete question"></a>
-                @endif
-            </td>
-            <td colspan="2">
-                @if ($_SESSION['userName'] == $answer['answerOwner'])
-                    <a href="/question/{{$question['id']}}/edit-answer/{{ $answer['id']}}"/>Edit</a>
-                @endif
-            </td>
-        </tr>
+
     @endforeach
 
         <tr>
             <td class="bottom-left-corner"></td>
-            <td>
+            <td colspan="3">
                 @if(isset($_SESSION['userName']))
                   <a href="/question/{{ $question['id'] }}/add-answer">Add New Answer</a>
                 @else
