@@ -65,8 +65,9 @@ class VoteController extends BaseController
         $connection = $this->getConnection();
         $questionDetails = QuestionQueries::getBy($connection, $questionId) -> getRecord();
         $questionVoteCount = (int)($questionDetails['vote_number']) + $this->getVoteCountChange();
-        QuestionQueries::updateVote($connection, $questionId,$questionVoteCount);
-
+        if ($questionVoteCount >= 0) {
+            QuestionQueries::updateVote($connection, $questionId, $questionVoteCount);
+        }
         header("Location: /question/".$questionId );
     }
 
