@@ -8,6 +8,7 @@ use App\Queries\AnswerQueries;
 use App\Queries\ImageQueries;
 use App\Queries\QuestionQueries;
 use App\Queries\RelQuestionTagQueries;
+use App\Queries\TagQueries;
 use App\Queries\UserQueries;
 
 /**
@@ -43,20 +44,29 @@ class QuestionController extends BaseController
      *
      */
     public function run() {
+
         session_start();
         $connection = $this->getConnection();
+
+        $loggedUser = $this->getLoggedUserId() ? UserQueries::getUserIDBySessionName($connection, $_SESSION['userName']) -> getRecord() : 0;
+
         $questionDetails = QuestionQueries::getBy($connection, $this ->getQuestionID()) -> getRecord();
 
         $time = strtotime($questionDetails['submission_time'] );
         $myFormatForView = date("m/d/y", $time);
         $questionDetails['submission_time'] = $myFormatForView;
-        $userName = UserQueries::getUsernameById($connection, $questionDetails['id_registered_user'])->getRecord();
+
+        $questionOwner = UserQueries::getById($connection, $questionDetails['id_registered_user'])->getRecord();
 
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
         $answers = $this -> getArraysOfRecords($answersByQuestionID);
         $tagsRecords = RelQuestionTagQueries::getBy($connection, $questionDetails['id']);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 
+        $imageId = $questionDetails['id_image'];
+        $imageName = ImageQueries::getBy($connection, $imageId)->get('file_name');
+        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
+            'questionOwner' => $questionOwner, 'imageName'=>$imageName, 'loggedUser' => $loggedUser]);
         if ($questionDetails['id_image'] !== null) {
             $imageId = $questionDetails['id_image'];
             $imageName = ImageQueries::getBy($connection, $imageId)->get('file_name');

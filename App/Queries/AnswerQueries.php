@@ -27,13 +27,22 @@ class AnswerQueries
         return Queries::queryAll($pdo, $sql, ['id_question' => $id_question]);
     }
 
-
-
     public static function getBy(PDO $pdo, int $id) : ResultSet
     {
         $sql = "SELECT *
 				FROM answer WHERE id = :id";
         return Queries::queryOne($pdo, $sql, ["id"=>$id]);
+    }
+
+    public static function getAnswersByUserID(PDO $pdo, $userId) : array
+    {
+        $sql = "SELECT answer.id, q.title as title, q.message as question,
+                    answer.message as answer, answer.vote_number, answer.submission_time
+                FROM answer
+                JOIN registered_user ru on ru.id = answer.id_registered_user
+                JOIN question q on q.id = answer.id_question
+                WHERE answer.id_registered_user= :id_regisetered_user";
+        return Queries::queryAll($pdo, $sql, ['id_regisetered_user' => $userId]);
     }
 
     public static function addSimple(PDO $pdo, string $message) : string

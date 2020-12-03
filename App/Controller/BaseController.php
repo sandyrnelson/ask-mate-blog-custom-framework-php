@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Queries\UserQueries;
 use BK_Framework\Database\Connection\Connection;
 use BK_Framework\Helper\File;
 use BK_Framework\Helper\JSON;
@@ -51,7 +52,8 @@ abstract class BaseController
 		return __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR;
 	}
 
-	protected function getConnection() : PDO
+
+    protected function getConnection() : PDO
 	{
 		return Connection::getConnection(self::$dbConfig);
 	}
@@ -77,5 +79,14 @@ abstract class BaseController
          array_multisort($array_column, SORT_DESC, $array);
          return $array;
      }
+
+    public function getLoggedUserId(): bool
+    {
+      if (isset($_SESSION['userName'])) {
+          return true;
+      }  else {
+          return false;
+      }
+    }
 
 }

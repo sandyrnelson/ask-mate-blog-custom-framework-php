@@ -84,4 +84,12 @@ class QuestionQueries
         return Queries::queryAll($pdo, $sql, ["search_word"=> "%".$searchedTerm."%"]);
     }
 
+    public static function getQuestionsByUserID(PDO $pdo, $userid)
+    {
+        $sql = "SELECT *
+				FROM question
+				WHERE id_registered_user = :id_registered_user";
+        return Queries::queryAll($pdo, $sql, ['id_registered_user' => $userid]);
+
+    }
 }

@@ -13,7 +13,7 @@
         <a class="active" href="/login">Login</a>
         <a href="/registration">Registration</a>
     @else
-        <a href=/userPage?id={{ $_SESSION['userId'] }}>Logged in as {{$_SESSION['userName']}}</a>
+        <a href=/userPage/{{ $loggedUser['id'] }}>Your User Page</a>
         <a class="active" href="/logout">Logout</a>
     @endif
 </div>
