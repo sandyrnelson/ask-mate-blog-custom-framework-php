@@ -14,6 +14,7 @@ use BK_Framework\SuperGlobal\Post;
  */
 class RegistrationHandlerController extends BaseController
 {
+    private string $errorMessage;
     /**
      *
      */
@@ -27,7 +28,7 @@ class RegistrationHandlerController extends BaseController
             UserQueries::addUser($connection, $newUser['email'], $hashedPassword);
             header("Location: " . '/login');
         } else {
-            $this->view("registrationPage", ["errorMessage"=>"Already registered!"]);
+            $this->view("registrationPage", ["errorMessage"=>$this->errorMessage]);
         }
 
     }
@@ -38,11 +39,20 @@ class RegistrationHandlerController extends BaseController
      * @return bool
      */
     private function registrationValidation($connection, $newUser) : bool {
+        if (!preg_match("/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}$/", $newUser['name'])) {
+            $this->errorMessage = "Invalid username";
+            return false;
+        }
         $users = UserQueries::getAllUsers($connection);
         $userEmails = array();
         foreach ($users as $user) {
             $userEmails[] = $user->get('email');
         }
-        return !in_array($newUser['email'], $userEmails, true);
+        if (!in_array($newUser['email'], $userEmails, true)) {
+            return true;
+        }
+
+        $this->errorMessage = "Already registered!";
+        return false;
     }
 }
