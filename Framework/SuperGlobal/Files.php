@@ -24,9 +24,9 @@ class Files
         $directory = __DIR__ . $destination;
         $possibleTypes = ['gif','jpg','jpe','jpeg','png', 'image/jpeg'];
 
-        if (!mkdir($directory) && !is_dir($directory)) {
-            echo "wrong dir";
-        }
+//        if (!mkdir($directory) && !is_dir($directory)) {
+//            echo "wrong dir";
+//        }
 
         if (in_array($fileType, $possibleTypes, true)) {
             move_uploaded_file($tmp_name, $directory.$fileName);

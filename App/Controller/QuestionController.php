@@ -57,10 +57,15 @@ class QuestionController extends BaseController
         $tagsRecords = RelQuestionTagQueries::getBy($connection, $questionDetails['id']);
         $tags = $this -> getArraysOfRecords($tagsRecords);
 
-        $imageId = $questionDetails['id_image'];
-        $imageName = ImageQueries::getBy($connection, $imageId)->get('file_name');
-        $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
-            'questionOwner' => $userName, 'imageName'=>$imageName]);
+        if ($questionDetails['id_image'] !== null) {
+            $imageId = $questionDetails['id_image'];
+            $imageName = ImageQueries::getBy($connection, $imageId)->get('file_name');
+            $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
+                'questionOwner' => $userName, 'imageName'=>$imageName]);
+        } else {
+            $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
+                'questionOwner' => $userName]);
+        }
     }
 
 
