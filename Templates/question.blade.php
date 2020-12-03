@@ -43,7 +43,7 @@
 
     <table class="tbl">
         <tr>
-            <th class="views"></th>
+            <th class="views">Date</th>
             <th colspan="3"><h2>{{ $question['title'] }}</h2></th>
             <th colspan="2" class="votes"><h3>Votes</h3></th>
         </tr>
