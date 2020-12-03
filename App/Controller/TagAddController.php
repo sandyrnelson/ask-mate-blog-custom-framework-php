@@ -47,7 +47,11 @@ class TagAddController extends BaseController
         $connection = $this->getConnection();
         $allTags = TagQueries::getAll($connection);
         if ($_POST) {
-            $this->checkQuestionTags($connection, $allTags);
+            $tagName = Post::get('tag_name');
+            if (!$this->checkTagValidity($tagName)) {
+                $this->view("addTagPage", ['tags'=>$allTags, 'questionId'=>$this->questionId]);
+            }
+            $this->checkQuestionTags($connection, $tagName, $allTags);
             header("Location: " . '/question/' . $this->questionId);
             exit();
         }
@@ -59,11 +63,11 @@ class TagAddController extends BaseController
 
     /**
      * @param $connection
+     * @param $tagName
      * @param array $allTags
      */
-    private function checkQuestionTags($connection, array $allTags): void
+    private function checkQuestionTags($connection, $tagName, array $allTags): void
     {
-        $tagName = Post::get('tag_name');
         $actualQuestionsTags = RelQuestionTagQueries::getBy($connection, $this->questionId);
         if (!in_array($tagName, array_map(array($this, 'arrayMapper'), $actualQuestionsTags), true)) {
             $this->addTagToQuestion($connection, $tagName, $allTags);
@@ -95,4 +99,7 @@ class TagAddController extends BaseController
         }
     }
 
+    private function checkTagValidity($tagName) {
+        return preg_match("/_[a-zA-Z0-9]+/", $tagName);
+    }
 }

@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tags</title>
+    <title>Cooking - Users</title>
+    <link rel="icon" type="image/png" href="/Static/image/logo.png">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/users.css">
@@ -10,7 +11,7 @@
 <div class="topnav" id="login_signin">
     @if (!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
-        <a href="/registration">Sign in</a>
+        <a href="/registration">Registration</a>
     @else
         <a href=/userPage/{{ $loggedUser['id'] }}>Your User Page</a>
         <a class="active" href="/logout">Logout</a>
@@ -33,11 +34,11 @@
     <h1>Registered Users</h1>
     <table class="tbl">
         <tr>
-            <th class="views">User ID</th>
+            <th class="top-left-corner">User ID</th>
             <th >User Email</th>
-            <th >Registration date</th>
-            <th >Count of asked questions</th>
-            <th >Count of answers</th>
+            <th >Registration Date</th>
+            <th >Questions Asked</th>
+            <th class="top-right-corner">Answers</th>
         </tr>
         <tbody>
         @foreach ($users as $user)

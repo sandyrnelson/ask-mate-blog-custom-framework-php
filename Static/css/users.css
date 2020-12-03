@@ -140,7 +140,7 @@ th {
 
 .topnav .search-container button {
     float: right;
-    padding: 6px 10px;
+    padding: 7.5px 10px;
     margin-top: 8px;
     margin-right: 16px;
     background: #ddd;
@@ -174,4 +174,16 @@ th {
     justify-content: flex-end;
     align-content: flex-end;
     width: 100%;
+}
+
+.top-right-corner{
+    border-top-right-radius: 25%;
+}
+
+.top-left-corner{
+    border-top-left-radius: 25%;
+}
+
+.tbl {
+    font-size: 18px;
 }

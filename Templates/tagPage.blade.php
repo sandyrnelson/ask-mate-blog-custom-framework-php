@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tags</title>
+    <title>Cooking - Tags</title>
+    <link rel="icon" type="image/png" href="/Static/image/logo.png">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/list.css">
@@ -10,7 +11,7 @@
 <div class="topnav" id="login_signin">
     @if (!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
-        <a href="/registration">Sign in</a>
+        <a href="/registration">Registration</a>
     @else
         <a href=/userPage/{{ $loggedUser['id'] }}>Your User Page</a>
         <a class="active" href="/logout">Logout</a>
@@ -29,13 +30,13 @@
     <h1>List of Tags</h1>
     <table class="tbl">
         <tr>
-            <th><h3>Tag Name</h3></th>
-            <th><h3>Used in questions</h3></th>
+            <th class="top-left-corner"><h3>Tag Name</h3></th>
+            <th class="top-right-corner"><h3>Used in questions</h3></th>
         </tr>
         @foreach ($tags as $tag)
             <tr>
-                <td>{{ $tag->get('name') }}</td>
-                <td>{{ $tag->get('count_questions') }}</td>
+                <td >{{ $tag->get('name') }}</td>
+                <td >{{ $tag->get('count_questions') }}</td>
             </tr>
         @endforeach
     </table>

@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tags</title>
+    <title>Cooking - Tags</title>
+    <link rel="icon" type="image/png" href="/Static/image/logo.png">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/form.css">
@@ -11,7 +12,7 @@
 
     @if(!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
-        <a href="/registration">Sign in</a>
+        <a href="/registration">Registration</a>
     @else
         <a href=/userPage/{{ $loggedUser['id'] }}> Your User Page</a>
         <a class="active" href="/logout">Logout</a>
@@ -47,7 +48,7 @@
                 <label for="add-tag">Add New Tag</label>
             </div>
             <div class="col-75">
-                <input type="text" id="add-tag" name="tag_name" required minlength="2" size="20">
+                <input type="text" id="add-tag" name="tag_name" oninvalid="setCustomValidity('Numbers and Letters allowed!')" pattern="_[a-zA-Z0-9]+" required minlength="2" size="20">
             </div>
         </div>
         <div class="row">

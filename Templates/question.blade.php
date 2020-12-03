@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cooking Tips</title>
+    <title>Cooking - Question</title>
+    <link rel="icon" type="image/png" href="/Static/image/logo.png">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/question.css">
@@ -11,7 +12,7 @@
 <div class="topnav" id="login_signin">
     @if(!isset($_SESSION['userName']))
         <a class="active" href="/login">Login</a>
-        <a href="/registration">Sign in</a>
+        <a href="/registration">Registration</a>
     @else
         <a href=/userPage/{{ $loggedUser['id'] }}> Your User Page</a>
         <a class="active" href="/logout">Logout</a>
@@ -40,14 +41,14 @@
 
     <table class="tbl">
         <tr>
-            <th class="views"></th>
-            <th><h2>{{ $question['title'] }}</h2></th>
+            <th class="views">Date</th>
+            <th colspan="3"><h2>{{ $question['title'] }}</h2></th>
             <th colspan="2" class="votes"><h3>Votes</h3></th>
         </tr>
 
         <tr>
             <td > {{ $question['submission_time'] }} </td>
-            <td id="question_message" style="width: 80%">{{ $question['message'] }} </td>
+            <td colspan="3" id="question_message" style="width: 80%">{{ $question['message'] }} </td>
             <td> {{ $question['vote_number'] }}</td>
             <td>
                 <a href="/question/{{ $question['id']}}/vote/up">
@@ -73,11 +74,13 @@
                     @endif
                 @endif
             </td>
-            <td>
+            <td colspan="3">
                 @if($tags != null)
                     @foreach($tags as $tag)
                         <div class="tag">{{ $tag['name'] }}
-                            <a href="/delete_tag/{{$question['id']}}/{{ $tag['name'] }}">[X]</a>
+                           <span class="tag-deletion">
+                               <a href="/delete_tag/{{$question['id']}}/{{ $tag['name'] }}">[X]</a>
+                           </span>
                         </div>
                     @endforeach
                 @endif
@@ -94,9 +97,9 @@
         <tr>
             <td> </td>
 
-            <td style="text-align:center">
-                @if($question["id_image"] != '')
-                    <img class="small" src="/Static/image/{{ $question['id_image'] }}.jpg"  width="350px" alt="question_image">
+            <td colspan="3" style="text-align:center">
+                @if($imageName)
+                    <img class="small" src="/Static/image/{{ $imageName }}"  width="350px" alt="question_image">
                 @endif
             </td>
             <td colspan="2"></td>
@@ -104,8 +107,8 @@
 
 
         <tr>
-            <th></th>
-            <th><h2>Answers</h2></th>
+            <th ></th>
+            <th colspan="3"><h2>Answers</h2></th>
             <th colspan="2"><strong>Votes</strong></th>
         </tr>
 
@@ -123,9 +126,19 @@
                     @endif
                 @endif
             </td>
-
-            <td>{{ $answer['message'] }}</td>
-
+            <td class="answer-message">{{ $answer['message'] }}</td>
+            <td>
+                @if ($_SESSION['userName'] == $answer['answerOwner'])
+                    <a href="/question/{{$question['id']}}/edit-answer/{{ $answer['id']}}"/>Edit</a>
+                @endif
+            </td>
+            <td>
+                @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
+                    <a href="/question/{{ $question['id'] }}/delete-answer/{{ $answer['id']}}">
+                        <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
+                             width="15" height="20" alt="Delete question"></a>
+                @endif
+            </td>
             <td style="text-align: center">{{ $answer['vote_number'] }}</td>
             <td>
                 <a href="/question/{{ $question['id'] }}/vote-answer/{{ $answer['id']}}/up">
@@ -138,25 +151,12 @@
                 </a>
             </td>
         </tr>
-        <tr>
-            <td>
-                @if ($_SESSION['userName'] == $questionOwner['email'] or $_SESSION['userName'] == $answer['answerOwner'] )
-                    <a href="/question/{{ $question['id'] }}/delete-answer/{{ $answer['id']}}">
-                        <img src="https://www.pngfind.com/pngs/m/641-6416950_search-delete-svg-png-icon-free-download-png.png"
-                            width="15" height="20" alt="Delete question"></a>
-                @endif
-            </td>
-            <td colspan="2">
-                @if ($_SESSION['userName'] == $answer['answerOwner'])
-                    <a href="/question/{{$question['id']}}/edit-answer/{{ $answer['id']}}"/>Edit</a>
-                @endif
-            </td>
-        </tr>
+
     @endforeach
 
         <tr>
             <td class="bottom-left-corner"></td>
-            <td>
+            <td colspan="3">
                 @if(isset($_SESSION['userName']))
                   <a href="/question/{{ $question['id'] }}/add-answer">Add New Answer</a>
                 @else
