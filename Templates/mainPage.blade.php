@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ask Mate</title>
+    <title>Cooking - Home</title>
+    <link rel="icon" type="image/png" href="/Static/image/logo.png">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/users.css">
@@ -41,7 +42,7 @@
                     <th class="views">Title</th>
                     <th>Latest Questions</th>
                     <th >Submission time</th>
-                    <th >Votes</th>
+                    <th class="votes">Votes</th>
                 </tr>
                 <tbody>
                 @foreach ($questions as $question)

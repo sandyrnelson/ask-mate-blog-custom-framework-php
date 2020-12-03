@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cooking Tips</title>
+    <title>Cooking - Question</title>
+    <link rel="icon" type="image/png" href="/Static/image/logo.png">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/question.css">

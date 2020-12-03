@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tags</title>
+    <title>Cooking - Users</title>
+    <link rel="icon" type="image/png" href="/Static/image/logo.png">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Static/css/users.css">

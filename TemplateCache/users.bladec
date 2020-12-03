@@ -23,8 +23,8 @@
  <a href="/ask-question">New Question</a>
  <?php endif; ?>
  <div class="search-container">
- <form action="/search">
- <input type="text" placeholder="Search.." name="q">
+ <form action="/search" method="post">
+ <input type="text" placeholder="Search.." name="search">
  <button type="submit"><i class="fa fa-search"></i></button>
  </form>
  </div>
@@ -55,7 +55,7 @@
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </tbody>
  </table>
- <?php /*    <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-productivity-5/128/questions-answers-512.png">*/ ?>
+<?php /*        <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-productivity-5/128/questions-answers-512.png">*/ ?>
 </div>
 </body>
 </html>
