@@ -57,7 +57,6 @@ class QuestionController extends BaseController
         $questionDetails['submission_time'] = $myFormatForView;
 
         $questionOwner = UserQueries::getById($connection, $questionDetails['id_registered_user'])->getRecord();
-
         $answersByQuestionID = AnswerQueries::getAnswersByQuestionID($connection, $this->getQuestionID());
         $answers = $this -> getArraysOfRecords($answersByQuestionID);
         $tagsRecords = RelQuestionTagQueries::getBy($connection, $questionDetails['id']);
@@ -71,10 +70,10 @@ class QuestionController extends BaseController
             $imageId = $questionDetails['id_image'];
             $imageName = ImageQueries::getBy($connection, $imageId)->get('file_name');
             $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
-                'questionOwner' => $userName, 'imageName'=>$imageName]);
+                'questionOwner' => $questionOwner, 'imageName'=>$imageName]);
         } else {
             $this->view("question", ['question' => $questionDetails, 'answers' => $answers, 'tags' => $tags,
-                'questionOwner' => $userName]);
+                'questionOwner' => $questionOwner]);
         }
     }
 
